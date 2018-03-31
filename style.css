@@ -16,9 +16,60 @@ section {
 }
 
 .reading {
-  margin: 20px;
+  margin: 20px auto;
   padding: 20px;
   border: 1px solid #997542;
-  display: inline-block;
   border-radius: 20px;
+  width: 800px;
+}
+
+.cards {
+  padding: 30px;
+}
+
+.item {
+  border: 3px solid #000;
+  flex: 1;
+  margin: 10px;
+  min-height: 200px;
+  max-height: 200px;
+  width: 110px;
+  background-size: cover;
+}
+
+.item h2 {
+  font-size: 18px;
+  font-weight: normal;
+  margin-top: -30px;
+  text-align:center;
+}
+
+.item-foundation {
+  margin: 20px 0;
+  overflow: hidden;
+
+}
+
+.taller {
+  margin: 20px 0;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.rotated {
+  transform: rotate(90deg);
+  -webkit-transform-origin: 50%  51%;
+  margin-top: -210px;
 }
