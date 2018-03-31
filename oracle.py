@@ -8,7 +8,23 @@
 # create a list of cards
 # create a spread
 
-import random, datetime
+import random, datetime, os, time
+
+# ---------------------------------------------------------
+# html template
+# ---------------------------------------------------------
+
+html_header = ("<html><head>"
+               "<title>Rider-Waite Reader</title>"
+               "<link rel='stylesheet' href='style.css'>"
+               "</head>"
+               "<body>"
+               "<header><h1>Rider-Waite-Reader</h1></header>"
+               "<section>")
+
+
+html_footer = ("</section>"
+               "</body></html>")
 
 # ---------------------------------------------------------
 # reference spread dictionary
@@ -261,14 +277,22 @@ if __name__ == "__main__":
       spread_total_tokens = spread['total_tokens']
       result = throw_tokens(spread['name'], spread['total_tokens'], tokens)
 
-  print("----------------------------------")
-  print("Date:",todays_date)
-  print("Question:", question, "\n")
-  print("Spread:",spread_name, "\n")
-  i = 0
-  for token in result:
-    print(str(i)+". "+token.name)
-    i = i + 1
-  print("----------------------------------")
+  new_filename = todays_date+'.html'
+  if os.path.isfile(new_filename):
+    new_filename = todays_date+str(int(time.time()))+'.html'
 
+  with open(new_filename, 'w') as f:
+    f.write(html_header)
+
+    f.write("<div class='reading'")
+    f.write("<p>Date: "+todays_date+"</p>")
+    f.write("<p>Question: "+question+"</p>")
+    f.write("<p>Spread: "+spread_name+"</p>")
+    i = 0
+    for token in result:
+      f.write("<p>"+str(i)+". "+token.name+"</p>")
+      i = i + 1
+    f.write("</div>")
+
+    f.write(html_footer)
 

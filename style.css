@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  margin: 0;
+  padding: 20px;
+  background-color: #997542;
+  color: #fff;
+}
+
+section {
+  background-color: #fff;
+  color: #000;
+}
+
+.reading {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #997542;
+  display: inline-block;
+  border-radius: 20px;
+}
