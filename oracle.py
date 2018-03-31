@@ -17,37 +17,37 @@ import random
 spreads_reference = [
   {
     'name': 'Single Card Spread',
-    'total_cards': 1,
+    'total_tokens': 1,
     'orientation': 'horizontal'
   },
   {
     'name': 'Three Card Spread',
-    'total_cards': 3,
+    'total_tokens': 3,
     'orientation': 'horizontal'
   },
   {
     'name': 'Directional Spread',
-    'total_cards': 6,
+    'total_tokens': 6,
     'orientation': 'horizontal'
   },
   {
     'name': 'Celtic Cross Spread',
-    'total_cards': 10,
+    'total_tokens': 10,
     'orientation': 'horizontal'
   },
   {
     'name': 'Foundation Spread',
-    'total_cards': 16,
+    'total_tokens': 16,
     'orientation': 'horizontal'
   },
   {
     'name': 'Landscape Spread',
-    'total_cards': 12,
+    'total_tokens': 12,
     'orientation': 'vertical'
   },
   {
     'name': 'Tree of Life',
-    'total_cards': 10,
+    'total_tokens': 10,
     'orientation': 'vertical'
   }
 ]
@@ -203,6 +203,9 @@ def init_all_cards(cards):
 
 # ---------------------------------------------------------
 # throw the spread with any given token
+#   - name expects a string
+#   - number_of_tokens expects an integer
+#   - tokens expects an array
 # ---------------------------------------------------------
 
 def throw_tokens(name, number_of_tokens, tokens):
@@ -237,7 +240,6 @@ if __name__ == "__main__":
     c.print_card()
   print("\n\n")
 
-  throw_tokens("Past, Present, Future", 3, cards)
-  print("")
-  throw_tokens("Past, Present, Future", 3, runes)
+  for spread in spreads_reference:
+    throw_tokens(spread['name'], spread['total_tokens'], cards)
 
