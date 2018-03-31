@@ -8,7 +8,7 @@
 # create a list of cards
 # create a spread
 
-import random
+import random, datetime
 
 # ---------------------------------------------------------
 # reference spread dictionary
@@ -16,36 +16,43 @@ import random
 
 spreads_reference = [
   {
+    'spread_id': 1,
     'name': 'Single Card Spread',
     'total_tokens': 1,
     'orientation': 'horizontal'
   },
   {
+    'spread_id': 2,
     'name': 'Three Card Spread',
     'total_tokens': 3,
     'orientation': 'horizontal'
   },
   {
+    'spread_id': 3,
     'name': 'Directional Spread',
     'total_tokens': 6,
     'orientation': 'horizontal'
   },
   {
+    'spread_id': 4,
     'name': 'Celtic Cross Spread',
     'total_tokens': 10,
     'orientation': 'horizontal'
   },
   {
+    'spread_id': 5,
     'name': 'Foundation Spread',
     'total_tokens': 16,
     'orientation': 'horizontal'
   },
   {
+    'spread_id': 6,
     'name': 'Landscape Spread',
     'total_tokens': 12,
     'orientation': 'vertical'
   },
   {
+    'spread_id': 7,
     'name': 'Tree of Life',
     'total_tokens': 10,
     'orientation': 'vertical'
@@ -215,9 +222,8 @@ def throw_tokens(name, number_of_tokens, tokens):
   for s in range (1,number_of_tokens+1):
     spread.append(random.choice(tokens))
 
-  print("-----------------\nSpread:", name, "\n")
-  for token in spread:
-    print(token.name)
+  return spread
+
 
 # ---------------------------------------------------------
 # main
@@ -225,21 +231,44 @@ def throw_tokens(name, number_of_tokens, tokens):
 
 if __name__ == "__main__":
 
-  runes = []
-  cards = []
+  tokens = []
+  result = []
 
-  print("\n=== Initialize all runes\n")
-  runes = init_all_runes(runes)
-  for r in runes:
-    r.print_rune()
-  print("\n")
+  todays_date = datetime.datetime.today().strftime('%Y-%m-%d')
+  which_token = int(input("Enter '1' for cards or '2' for runes: "))
+  question = input("Enter your question: ")
 
-  print("=== Initialize all cards\n")
-  cards = init_all_cards(cards)
-  for c in cards:
-    c.print_card()
-  print("\n\n")
+  print("\nChoose from the following spreads: \n")
+  for spread in spreads_reference:
+    print(str(spread['spread_id'])+". "+spread['name'])
+
+  which_spread = int(input("\nEnter a number: "))
+
+  input("\nConcentrate on your question. When ready, hit enter... ")
+
+  print("\nReticulating splines...\n")
+
+  if which_token == 1:
+    tokens = init_all_cards(tokens)
+    which_token = 'cards'
+  else:
+    tokens = init_all_runes(tokens)
+    which_token = 'runes'
 
   for spread in spreads_reference:
-    throw_tokens(spread['name'], spread['total_tokens'], cards)
+    if which_spread == spread['spread_id']:
+      spread_name = spread['name']
+      spread_total_tokens = spread['total_tokens']
+      result = throw_tokens(spread['name'], spread['total_tokens'], tokens)
+
+  print("----------------------------------")
+  print("Date:",todays_date)
+  print("Question:", question, "\n")
+  print("Spread:",spread_name, "\n")
+  i = 0
+  for token in result:
+    print(str(i)+". "+token.name)
+    i = i + 1
+  print("----------------------------------")
+
 
