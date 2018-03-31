@@ -3,12 +3,54 @@
 # written as an exercise in about ninety minutes
 # Jenner Hanni
 # GPLv3
-# 
+#
 # create a list of runes
 # create a list of cards
 # create a spread
 
 import random
+
+# ---------------------------------------------------------
+# reference spread dictionary
+# ---------------------------------------------------------
+
+spreads_reference = [
+  {
+    'name': 'Single Card Spread',
+    'total_cards': 1,
+    'orientation': 'horizontal'
+  },
+  {
+    'name': 'Three Card Spread',
+    'total_cards': 3,
+    'orientation': 'horizontal'
+  },
+  {
+    'name': 'Directional Spread',
+    'total_cards': 6,
+    'orientation': 'horizontal'
+  },
+  {
+    'name': 'Celtic Cross Spread',
+    'total_cards': 10,
+    'orientation': 'horizontal'
+  },
+  {
+    'name': 'Foundation Spread',
+    'total_cards': 16,
+    'orientation': 'horizontal'
+  },
+  {
+    'name': 'Landscape Spread',
+    'total_cards': 12,
+    'orientation': 'vertical'
+  },
+  {
+    'name': 'Tree of Life',
+    'total_cards': 10,
+    'orientation': 'vertical'
+  }
+]
 
 # ---------------------------------------------------------
 # rune-related classes and functions
@@ -77,7 +119,7 @@ class Card(object):
     print(card.number, card.name, card.image)
 
 def init_all_cards(cards):
-  
+
   cards.append(Card("0","The Fool","tarot-0-fool.png"))
   cards.append(Card("I","The Magician","tarot-1-magician.png"))
   cards.append(Card("II","The High Priestess","tarot-2-high-priestess.png"))
