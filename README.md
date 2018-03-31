@@ -16,6 +16,20 @@ The cards and runes are hard-coded.
 
 `./oracle` will currently print the list of runes, the list of cards, a three-card spread, and a three-rune spread to stdout.
 
+## Screenshots
+
+Flexbox-based card layouts:
+
+[](onecard.png)
+
+[](threecard.png)
+
+[](celticcross.png)
+
+[](directional.png)
+
+[](treeoflife.png)
+
 ## Output
 
 ```
