@@ -28,7 +28,7 @@ class Rune(object):
     self.image = str(number)+'.gif'
 
   def print_rune(rune):
-    print rune.number, rune.letter, rune.name, rune.meaning, rune.image
+    print(rune.number, rune.letter, rune.name, rune.meaning, rune.image)
 
 def init_all_runes(runes):
 
@@ -74,7 +74,7 @@ class Card(object):
     self.image = image
 
   def print_card(card):
-    print card.number, card.name, card.image
+    print(card.number, card.name, card.image)
 
 def init_all_cards(cards):
   
@@ -170,9 +170,9 @@ def throw_tokens(name, number_of_tokens, tokens):
   for s in range (1,number_of_tokens+1):
     spread.append(random.choice(tokens))
 
-  print "-----------------\nSpread:", name, "\n"
+  print("-----------------\nSpread:", name, "\n")
   for token in spread:
-    print token.name
+    print(token.name)
 
 # ---------------------------------------------------------
 # main
@@ -183,19 +183,19 @@ if __name__ == "__main__":
   runes = []
   cards = []
 
-  print "\n=== Initialize all runes\n"
+  print("\n=== Initialize all runes\n")
   runes = init_all_runes(runes)
   for r in runes:
     r.print_rune()
-  print "\n"
+  print("\n")
 
-  print "=== Initialize all cards\n"
+  print("=== Initialize all cards\n")
   cards = init_all_cards(cards)
   for c in cards:
     c.print_card()
-  print "\n\n"
+  print("\n\n")
 
   throw_tokens("Past, Present, Future", 3, cards)
-  print ""
+  print("")
   throw_tokens("Past, Present, Future", 3, runes)
 
