@@ -20,15 +20,15 @@ The cards and runes are hard-coded.
 
 Flexbox-based card layouts:
 
-![](onecard.png)
+![](docs/onecard.png)
 
-![](threecard.png)
+![](docs/threecard.png)
 
-![](celticcross.png)
+![](docs/celticcross.png)
 
-![](directional.png)
+![](docs/directional.png)
 
-![](treeoflife.png)
+![](docs/treeoflife.png)
 
 ## Output
 
