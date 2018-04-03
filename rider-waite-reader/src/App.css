@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+
 body {
   margin: 0;
   padding: 0;
@@ -18,9 +20,14 @@ section {
 }
 
 h1 {
-  font-size: 1.8em;
+  font-size: 2em;
   font-family: 'Dancing Script', cursive;
   text-align: center;
+}
+
+h1 a {
+  color: #fff;
+  text-decoration: none;
 }
 
 h2 {
@@ -31,8 +38,6 @@ h2 {
 .reading {
   margin: 20px auto;
   padding: 20px;
-  border: 1px solid #997542;
-  border-radius: 20px;
   width: 800px;
 }
 

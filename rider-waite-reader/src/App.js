@@ -10,13 +10,6 @@ class Header extends Component {
 
       <header>
         <h1><a href="/">The Rider-Waite Reader</a></h1>
-        <nav>
-          <ul>
-            <li><a href="/">Get a Reading</a></li>
-            <li><a href="/history">History</a></li>
-            <li><a href="/layouts">Layouts</a></li>
-          </ul>
-        </nav>
       </header>
 
     )
@@ -522,16 +515,6 @@ class App extends Component {
             <div>
               <Header />
               <FormGetAReading cards={this.state.cards}/>
-            </div>          )}/>
-          <Route exact path='/layouts' render={({ history }) => (
-            <div>
-              <Header />
-              <Layouts />
-            </div>          )}/>
-          <Route exact path='/history' render={({ history }) => (
-            <div>
-              <Header />
-              <History />
             </div>          )}/>
           <Route path='*' render={({ history }) => (
             <div>
