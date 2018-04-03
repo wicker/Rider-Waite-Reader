@@ -322,7 +322,6 @@ class LayoutOneCard extends Component {
               <p><strong>Keywords</strong></p>
               <p>if reversed, show shadow else show light</p>
               <p>switch focus, show results</p>
-              <p>questions to ask</p>
             </div>
           </div>
         </div>
