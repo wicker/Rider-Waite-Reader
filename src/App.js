@@ -53,7 +53,9 @@ class FormGetAReading extends Component {
     layout: 'onecard',
     getReading: false,
     redirect: false,
-    cardResult: []
+    cardResult: [],
+    reversed: false,
+    focus: 'none'
   }
 
   constructor() {
@@ -208,6 +210,25 @@ class FormGetAReading extends Component {
                   onChange={this.handleChange}/> Celtic Cross
                 <input type="radio" name="layout" value="treeoflife"
                   onChange={this.handleChange}/> Tree of Life
+              </p>
+              <p>
+                Focus of Reading?<br />
+                <input type="radio" name="focus" value="Relationships"
+                  defaultChecked onChange={this.handleChange}/> Relationships
+                <input type="radio" name="focus" value="Work"
+                  onChange={this.handleChange}/> Work
+                <input type="radio" name="focus" value="spirituality"
+                  onChange={this.handleChange}/> Spirituality
+                <input type="radio" name="focus" value="personalgrowth"
+                  onChange={this.handleChange}/> Personal Growth
+                <input type="radio" name="focus" value="fortunetelling"
+                  onChange={this.handleChange}/> Fortunetelling
+                <input type="radio" name="focus" value="none"
+                  onChange={this.handleChange}/> None
+              </p>
+              <p>
+                Allow reversed cards?
+                <input type="checkbox" name="reversed" value="reversed" />
               </p>
               <p>
                 <input type="submit" value="Read the cards!" />
