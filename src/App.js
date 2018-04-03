@@ -33,32 +33,65 @@ class NotFound404 extends Component {
   }
 }
 
-class Content extends Component {
+class FormGetAReading extends Component {
+
+  state = {
+    isLoaded: false,
+    question: '',
+    layout: 'onecard',
+    date: '2018-06-03',
+    getReading: false
+  }
+
+  constructor() {
+    super()
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({[name]: value});
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.setState({getReading: true})
+  }
 
   render() {
     return (
-            <div>
+      <div>
 				<section className="reading">
 					<h1>Get a Reading</h1>
-					<form>
+          <div>{this.state.question} on layout {this.state.layout}</div>
+					<form onSubmit={this.handleSubmit}>
 						<p>
 							Enter your question:
-							<input type="text" />
+							<input type="text" name="question" onChange={this.handleChange}/>
 						</p>
 						<p>
 							Which layout?<br />
-							<input type="radio" name="layout" value="one" checked /> One Card
-							<input type="radio" name="layout" value="three" /> Three Cards
-							<input type="radio" name="layout" value="directional" /> Directional
-							<input type="radio" name="layout" value="celticcross" /> Celtic Cross
-							<input type="radio" name="layout" value="treeoflife" /> Tree of Life
+							<input type="radio" name="layout" value="onecard"
+                defaultChecked onChange={this.handleChange}/> One Card
+							<input type="radio" name="layout" value="threecard"
+                onChange={this.handleChange}/> Three Cards
+							<input type="radio" name="layout" value="directional"
+                onChange={this.handleChange}/> Directional
+							<input type="radio" name="layout" value="celticcross"
+                onChange={this.handleChange}/> Celtic Cross
+							<input type="radio" name="layout" value="treeoflife"
+                onChange={this.handleChange}/> Tree of Life
 						</p>
 						<p>
 							<input type="submit" value="Read the cards!" />
 						</p>
 					</form>
 				</section>
-            </div>
+      </div>
 
     )
   }
@@ -129,7 +162,7 @@ class LayoutThreeCards extends Component {
 
     <div className="reading">
       <h1>Three Card</h1>
-      <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p> 
+      <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
       <div className="flex-row cards">
         <div className="flex-col">
           <div className="item"  style={{backgroundImage: `url(img/tarot-13-death.jpg)`}}>
@@ -159,7 +192,7 @@ class LayoutDirectional extends Component {
     return (
     <div className="reading">
       <h1>Directional Layout</h1>
-      <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p> 
+      <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
       <div className="flex-row cards">
         <div className="flex-col">
           <div className="item" style={{backgroundImage: `url(img/pents09.jpg)`}}>
@@ -198,7 +231,7 @@ class LayoutCelticCross extends Component {
     return (
     <div className="reading">
       <h1>Celtic Cross</h1>
-      <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p> 
+      <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
       <div className="flex-row cards">
         <div className="flex-col">
           <div className="item" style={{backgroundImage: `url(img/cups02.jpg)`}}>
@@ -250,7 +283,7 @@ class LayoutTreeOfLife extends Component {
     return (
       <div className="reading">
       <h1>Tree of Life</h1>
-      <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p> 
+      <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
       <div className="flex-row cards treeoflife-row">
         <div className="flex-col treeoflife-col-one">
           <div className="item taller" style={{backgroundImage: `url(img/pents01.jpg)`}}>
@@ -387,7 +420,7 @@ class App extends Component {
           <Route exact path='/' render={({ history }) => (
             <div>
               <Header />
-              <Content />
+              <FormGetAReading />
             </div>          )}/>
           <Route exact path='/layouts' render={({ history }) => (
             <div>
