@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import './App.css';
 
 class Header extends Component {
@@ -35,13 +36,16 @@ class NotFound404 extends Component {
 
 class FormGetAReading extends Component {
 
+  static propTypes = {
+    cards: PropTypes.array.isRequired
+  }
+
   state = {
-    isLoaded: false,
     question: '',
     layout: 'onecard',
-    date: '2018-06-03',
     getReading: false,
-    redirect: false
+    redirect: false,
+    cardResult: []
   }
 
   constructor() {
@@ -60,6 +64,10 @@ class FormGetAReading extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
+    // calculate cards
+    this.setState({cardResult: this.props.cards[0]})
+
     this.setState({getReading: true})
   }
 
@@ -67,7 +75,10 @@ class FormGetAReading extends Component {
     if (this.state.getReading) {
       switch (this.state.layout) {
         case 'onecard':
-          return (<LayoutOneCard />)
+          return (<LayoutOneCard
+                    question={this.state.question}
+                    card={this.state.cardResult}
+                  />)
         case 'threecard':
           return (<LayoutThreeCard />)
         case 'directional':
@@ -76,6 +87,8 @@ class FormGetAReading extends Component {
           return (<LayoutCelticCross />)
         case 'treeoflife':
           return (<LayoutTreeOfLife />)
+        default:
+          return (<Redirect to="/" />)
       }
     } else {
       return (
@@ -154,14 +167,32 @@ class Layouts extends Component {
 
 class LayoutOneCard extends Component {
 
+  static propTypes = {
+    card: PropTypes.object.isRequired,
+    question: PropTypes.string.isRequired
+  }
+
+  state = {
+    card: this.props.card,
+    question: this.props.question
+  }
+
   render() {
+
+    const { question } = this.state
+
     return (
       <div className="reading">
-					<h1>One Card</h1>
-					<p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
+        { question
+            ? <h1>{question}</h1>
+            : <div>
+                <h1>One Card</h1>
+                <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
+              </div>
+        }
 					<div className="flex-row cards">
 						<div className="flex-col">
-							<div className="item"  style={{backgroundImage: `url(img/pents09.jpg)`}} />
+							<div className="item"  style={{backgroundImage: `url(${this.props.card.path})`}} />
 						</div>
 					</div>
       </div>
@@ -435,7 +466,7 @@ class App extends Component {
           <Route exact path='/' render={({ history }) => (
             <div>
               <Header />
-              <FormGetAReading />
+              <FormGetAReading cards={this.state.cards}/>
             </div>          )}/>
           <Route exact path='/layouts' render={({ history }) => (
             <div>
