@@ -76,6 +76,45 @@ h2 {
 .rotated {
   transform: rotate(90deg);
   -webkit-transform-origin: 50%  51%;
-  margin-top: -210px;
+  margin-top: -100px;
 }
 
+.directional-north {
+  margin-bottom: 10px
+}
+
+.directional-center {
+  margin-top: 30px
+}
+
+.celticcross-col-second {
+  padding: 50px;
+}
+
+.celticcross-col-third {
+  padding: 30px;
+}
+
+.celticcross-card-one {
+  margin-top: 30px;
+}
+
+.celticcross-card-three {
+  margin-top: 30px;
+}
+
+.treeoflife-row {
+  align-items: flex-start
+}
+
+.treeoflife-col-one {
+  margin-top: 100px;
+}
+
+.treeoflife-col-three {
+  margin-top: 100px;
+}
+
+.treeoflife-card-six {
+  margin-top: 200px;
+}
