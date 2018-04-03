@@ -278,22 +278,56 @@ class LayoutOneCard extends Component {
     const { question } = this.state
 
     return (
-      <div className="reading">
-        <h1>About the One Card Layout</h1>
-                <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
-        { question
-            ? <h1>{question}</h1>
-            : <div>
-                <h1>Your Question</h1>
-              </div>
-        }
-					<div className="flex-row cards">
-						<div className="flex-col">
-              <div className="item" style={{backgroundImage: `url(${this.props.card[0].imgpath})`}} />
-						</div>
-					</div>
+    <div>
+      <div className="primary">
+        <div className="reading">
+          <h1>About the One Card Layout</h1>
+            <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
+        </div>
       </div>
 
+      <div className="secondary">
+        <div className="reading">
+          { question
+              ? <h1>{question}</h1>
+              : null
+          }
+            <div className="flex-row cards">
+              <div className="flex-col">
+                <div className="item" style={{backgroundImage: `url(${this.props.card[0].imgpath})`}} />
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <div className="primary">
+        <div className="reading">
+          <h1>Interpreting Your Reading</h1>
+          <div className="flex-row">
+            <div>
+              <h2>Position 1</h2>
+              <img src={this.props.card[0].imgpath} />
+            </div>
+            <div>
+              <p>Spread position meaning</p>
+            </div>
+          </div>
+          <div className="flex-row">
+            <div>
+              <img src={this.props.card[0].imgpath} />
+              <p>Meanings</p>
+            </div>
+            <div>
+              <h2>Card Name</h2>
+              <p><strong>Keywords</strong></p>
+              <p>if reversed, show shadow else show light</p>
+              <p>switch focus, show results</p>
+              <p>questions to ask</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
     )
   }
 }
