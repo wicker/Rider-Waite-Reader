@@ -10,7 +10,8 @@ class Header extends Component {
     return (
 
       <header>
-        <h1><a href="/">The Rider-Waite Reader</a></h1>
+        <h1><a href="/">The Rider-Waite Tarot Reader</a></h1>
+        <div class="subtitle">Get a free reading!</div>
       </header>
 
     )
@@ -140,7 +141,7 @@ class FormGetAReading extends Component {
     if (this.state.getReading) {
       switch (this.state.layout) {
         case 'onecard':
-          return (<div>
+          return (<div class="primary">
                     <LayoutOneCard
                       question={this.state.question}
                       card={this.state.cardResult}
@@ -580,12 +581,12 @@ class App extends Component {
       <div>
         <Switch>
           <Route exact path='/' render={({ history }) => (
-            <div>
+            <div className="primary">
               <Header />
               <FormGetAReading cards={this.state.cards}/>
             </div>          )}/>
           <Route path='*' render={({ history }) => (
-            <div>
+            <div className="primary">
               <Header />
               <NotFound404 />
             </div>
