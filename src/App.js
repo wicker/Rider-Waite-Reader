@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import './App.css';
 
 class Header extends Component {
@@ -40,7 +40,8 @@ class FormGetAReading extends Component {
     question: '',
     layout: 'onecard',
     date: '2018-06-03',
-    getReading: false
+    getReading: false,
+    redirect: false
   }
 
   constructor() {
@@ -63,37 +64,51 @@ class FormGetAReading extends Component {
   }
 
   render() {
-    return (
-      <div>
-				<section className="reading">
-					<h1>Get a Reading</h1>
-          <div>{this.state.question} on layout {this.state.layout}</div>
-					<form onSubmit={this.handleSubmit}>
-						<p>
-							Enter your question:
-							<input type="text" name="question" onChange={this.handleChange}/>
-						</p>
-						<p>
-							Which layout?<br />
-							<input type="radio" name="layout" value="onecard"
-                defaultChecked onChange={this.handleChange}/> One Card
-							<input type="radio" name="layout" value="threecard"
-                onChange={this.handleChange}/> Three Cards
-							<input type="radio" name="layout" value="directional"
-                onChange={this.handleChange}/> Directional
-							<input type="radio" name="layout" value="celticcross"
-                onChange={this.handleChange}/> Celtic Cross
-							<input type="radio" name="layout" value="treeoflife"
-                onChange={this.handleChange}/> Tree of Life
-						</p>
-						<p>
-							<input type="submit" value="Read the cards!" />
-						</p>
-					</form>
-				</section>
-      </div>
-
-    )
+    if (this.state.getReading) {
+      switch (this.state.layout) {
+        case 'onecard':
+          return (<LayoutOneCard />)
+        case 'threecard':
+          return (<LayoutThreeCard />)
+        case 'directional':
+          return (<LayoutDirectional />)
+        case 'celticcross':
+          return (<LayoutCelticCross />)
+        case 'treeoflife':
+          return (<LayoutTreeOfLife />)
+      }
+    } else {
+      return (
+        <div>
+          <section className="reading">
+            <h1>Get a Reading</h1>
+            <div>{this.state.question} on layout {this.state.layout}</div>
+            <form onSubmit={this.handleSubmit}>
+              <p>
+                Enter your question:
+                <input type="text" name="question" onChange={this.handleChange}/>
+              </p>
+              <p>
+                Which layout?<br />
+                <input type="radio" name="layout" value="onecard"
+                  defaultChecked onChange={this.handleChange}/> One Card
+                <input type="radio" name="layout" value="threecard"
+                  onChange={this.handleChange}/> Three Cards
+                <input type="radio" name="layout" value="directional"
+                  onChange={this.handleChange}/> Directional
+                <input type="radio" name="layout" value="celticcross"
+                  onChange={this.handleChange}/> Celtic Cross
+                <input type="radio" name="layout" value="treeoflife"
+                  onChange={this.handleChange}/> Tree of Life
+              </p>
+              <p>
+                <input type="submit" value="Read the cards!" />
+              </p>
+            </form>
+          </section>
+        </div>
+      )
+    }
   }
 }
 
@@ -123,7 +138,7 @@ class Layouts extends Component {
 
         <LayoutOneCard />
 
-        <LayoutThreeCards />
+        <LayoutThreeCard />
 
         <LayoutDirectional />
 
@@ -155,7 +170,7 @@ class LayoutOneCard extends Component {
   }
 }
 
-class LayoutThreeCards extends Component {
+class LayoutThreeCard extends Component {
 
   render() {
     return (
