@@ -128,13 +128,25 @@ class FormGetAReading extends Component {
                     card={this.state.cardResult}
                   />)
         case 'threecard':
-          return (<LayoutThreeCard />)
+          return (<LayoutThreeCard
+                    question={this.state.question}
+                    cards={this.state.cardResult}
+                  />)
         case 'directional':
-          return (<LayoutDirectional />)
+          return (<LayoutDirectional
+                    question={this.state.question}
+                    cards={this.state.cardResult}
+                  />)
         case 'celticcross':
-          return (<LayoutCelticCross />)
+          return (<LayoutCelticCross
+                    question={this.state.question}
+                    cards={this.state.cardResult}
+                  />)
         case 'treeoflife':
-          return (<LayoutTreeOfLife />)
+          return (<LayoutTreeOfLife
+                    question={this.state.question}
+                    cards={this.state.cardResult}
+                  />)
         default:
           return (<Redirect to="/" />)
       }
@@ -143,7 +155,6 @@ class FormGetAReading extends Component {
         <div>
           <section className="reading">
             <h1>Get a Reading</h1>
-            <div>{this.state.question} on layout {this.state.layout}</div>
             <form onSubmit={this.handleSubmit}>
               <p>
                 Enter your question:
@@ -170,46 +181,6 @@ class FormGetAReading extends Component {
         </div>
       )
     }
-  }
-}
-
-class History extends Component {
-
-  render() {
-    return (
-               <div>
-				<section className="reading" style={{border: 0}}>
-					<h1>History</h1>
-					<p>Essay!</p>
-				</section>
-            </div>
-
-    )
-  }
-}
-
-class Layouts extends Component {
-
-  render() {
-    return (
-      <div>
-				<section className="reading" style={{border: 0}}>
-					<h1>Layouts</h1>
-				</section>
-
-        <LayoutOneCard />
-
-        <LayoutThreeCard />
-
-        <LayoutDirectional />
-
-        <LayoutCelticCross />
-
-        <LayoutTreeOfLife />
-
-      </div>
-
-    )
   }
 }
 
@@ -240,7 +211,7 @@ class LayoutOneCard extends Component {
         }
 					<div className="flex-row cards">
 						<div className="flex-col">
-              <div className="item"  style={{backgroundImage: `url(${this.props.card[0].path})`}} />
+              <div className="item" style={{backgroundImage: `url(${this.props.card[0].path})`}} />
 						</div>
 					</div>
       </div>
@@ -251,25 +222,43 @@ class LayoutOneCard extends Component {
 
 class LayoutThreeCard extends Component {
 
+  static propTypes = {
+    cards: PropTypes.array.isRequired,
+    question: PropTypes.string.isRequired
+  }
+
+  state = {
+    cards: this.props.cards,
+    question: this.props.question
+  }
+
   render() {
+
+    const { question } = this.state
+
     return (
 
     <div className="reading">
-      <h1>Three Card</h1>
-      <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
+      { question
+          ? <h1>{question}</h1>
+          : <div>
+              <h1>Three Card</h1>
+              <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
+            </div>
+      }
       <div className="flex-row cards">
         <div className="flex-col">
-          <div className="item"  style={{backgroundImage: `url(img/tarot-13-death.jpg)`}}>
+          <div className="item" style={{backgroundImage: `url(${this.props.cards[0].path})`}}>
             <h2>Past</h2>
           </div>
         </div>
         <div className="flex-col">
-          <div className="item"  style={{backgroundImage: `url(img/tarot-6-the-lovers.jpg)`}}>
+          <div className="item" style={{backgroundImage: `url(${this.props.cards[1].path})`}}>
             <h2>Present</h2>
           </div>
         </div>
         <div className="flex-col">
-          <div className="item"  style={{backgroundImage: `url(img/tarot-9-hermit.jpg)`}}>
+          <div className="item" style={{backgroundImage: `url(${this.props.cards[2].path})`}}>
             <h2>Future</h2>
           </div>
         </div>
@@ -282,86 +271,138 @@ class LayoutThreeCard extends Component {
 
 class LayoutDirectional extends Component {
 
-  render() {
-    return (
-    <div className="reading">
-      <h1>Directional Layout</h1>
-      <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
-      <div className="flex-row cards">
-        <div className="flex-col">
-          <div className="item" style={{backgroundImage: `url(img/pents09.jpg)`}}>
-            <h2>West</h2>
-          </div>
-        </div>
-        <div className="flex-col">
-          <div className="item directional-north" style={{backgroundImage: `url(img/cups07.jpg)`}}>
-            <h2>North</h2>
-          </div>
-          <div className="item directional-center" style={{backgroundImage: `url(img/swords03.jpg)`}}>
-            <h2>Center</h2>
-          </div>
-          <div className="item rotated directional-union" style={{backgroundImage: `url(img/pents01.jpg)`}}>
-            <h2>Union</h2>
-          </div>
-          <div className="item" style={{backgroundImage: `url(img/wands10.jpg)`}}>
-            <h2>South</h2>
-          </div>
-        </div>
-        <div className="flex-col">
-          <div className="item" style={{backgroundImage: `url(img/wands04.jpg)`}}>
-            <h2>East</h2>
-          </div>
-        </div>
-      </div>
-      </div>
+  static propTypes = {
+    cards: PropTypes.array.isRequired,
+    question: PropTypes.string.isRequired
+  }
 
+  state = {
+    cards: this.props.cards,
+    question: this.props.question
+  }
+
+  render() {
+
+    const { question } = this.state
+
+    return (
+      <div className="reading">
+        { question
+            ? <h1>{question}</h1>
+            : <div>
+                <h1>Directional Spread</h1>
+                <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
+              </div>
+        }
+        <div className="flex-row cards">
+          <div className="flex-col">
+            <div className="item"
+              style={{backgroundImage: `url(${this.props.cards[4].path})`}}>
+              <h2>West</h2>
+            </div>
+          </div>
+          <div className="flex-col">
+            <div className="item directional-north"
+              style={{backgroundImage: `url(${this.props.cards[5].path})`}}>
+              <h2>North</h2>
+            </div>
+            <div className="item directional-center"
+              style={{backgroundImage: `url(${this.props.cards[0].path})`}}>
+              <h2>Center</h2>
+            </div>
+            <div className="item rotated directional-union"
+              style={{backgroundImage: `url(${this.props.cards[1].path})`}}>
+              <h2>Union</h2>
+            </div>
+            <div className="item"
+              style={{backgroundImage: `url(${this.props.cards[3].path})`}}>
+              <h2>South</h2>
+            </div>
+          </div>
+          <div className="flex-col">
+            <div className="item"
+              style={{backgroundImage: `url(${this.props.cards[2].path})`}}>
+              <h2>East</h2>
+            </div>
+          </div>
+        </div>
+      </div>
     )
   }
 }
 
 class LayoutCelticCross extends Component {
 
+  static propTypes = {
+    cards: PropTypes.array.isRequired,
+    question: PropTypes.string.isRequired
+  }
+
+  state = {
+    cards: this.props.cards,
+    question: this.props.question
+  }
+
   render() {
+
+    const { question } = this.state
+
     return (
     <div className="reading">
-      <h1>Celtic Cross</h1>
-      <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
+        { question
+            ? <h1>{question}</h1>
+            : <div>
+                <h1>Celtic Cross</h1>
+                <h1>Directional Spread</h1>
+                <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
+              </div>
+        }
       <div className="flex-row cards">
         <div className="flex-col">
-          <div className="item" style={{backgroundImage: `url(img/cups02.jpg)`}}>
+          <div className="item"
+            style={{backgroundImage: `url(${this.props.cards[3].path})`}}>
             <h2>Card 4</h2>
           </div>
         </div>
         <div className="flex-col celticcross-col-second">
-          <div className="item" style={{backgroundImage: `url(img/swords07.jpg)`}}>
+          <div className="item"
+            style={{backgroundImage: `url(${this.props.cards[4].path})`}}>
             <h2>Card 5</h2>
           </div>
-          <div className="item celticcross-card-one" style={{backgroundImage: `url(img/tarot-0-fool.jpg)`}}>
+          <div className="item celticcross-card-one"
+            style={{backgroundImage: `url(${this.props.cards[0].path})`}}>
             <h2>Card 1</h2>
           </div>
-          <div className="item rotated celticcross-card-two" style={{backgroundImage: `url(img/tarot-13-death.jpg)`}}>
+          <div className="item rotated celticcross-card-two"
+            style={{backgroundImage: `url(${this.props.cards[1].path})`}}>
             <h2>Card 2</h2>
           </div>
-          <div className="item celticcross-card-three" style={{backgroundImage: `url(img/pents01.jpg)`}}>
+          <div className="item celticcross-card-three"
+            style={{backgroundImage: `url(${this.props.cards[2].path})`}}>
             <h2>Card 3</h2>
           </div>
         </div>
         <div className="flex-col celticcross-col-third">
-          <div className="item" style={{backgroundImage: `url(img/swords10.jpg)`}}>
+          <div className="item"
+            style={{backgroundImage: `url(${this.props.cards[5].path})`}}>
             <h2>Card 6</h2>
           </div>
         </div>
         <div className="flex-col">
-          <div className="item taller" style={{backgroundImage: `url(img/cups07.jpg)`}}>
+          <div className="item taller"
+            style={{backgroundImage: `url(${this.props.cards[9].path})`}}>
             <h2>Card 10</h2>
           </div>
-          <div className="item taller" style={{backgroundImage: `url(img/cups13.jpg)`}}>
+          <div className="item taller"
+            style={{backgroundImage: `url(${this.props.cards[8].path})`}}>
             <h2>Card 9</h2>
           </div>
-          <div className="item taller" style={{backgroundImage: `url(img/cups01.jpg)`}}>
+          <div className="item taller"
+           style={{backgroundImage: `url(${this.props.cards[7].path})`}}>
             <h2>Card 8</h2>
           </div>
-          <div className="item taller" style={{backgroundImage: `url(img/cups09.jpg)`}}>
+          <div className="item taller"
+            style={{backgroundImage: `url(${this.props.cards[6].path})`}}>
             <h2>Card 7</h2>
           </div>
         </div>
@@ -373,45 +414,74 @@ class LayoutCelticCross extends Component {
 
 class LayoutTreeOfLife extends Component {
 
+  static propTypes = {
+    cards: PropTypes.array.isRequired,
+    question: PropTypes.string.isRequired
+  }
+
+  state = {
+    cards: this.props.cards,
+    question: this.props.question
+  }
+
   render() {
+
+    const { question } = this.state
+
     return (
       <div className="reading">
-      <h1>Tree of Life</h1>
-      <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
+        { question
+            ? <h1>{question}</h1>
+            : <div>
+                <h1>Tree of Life</h1>
+                <h1>Directional Spread</h1>
+                <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
+              </div>
+        }
       <div className="flex-row cards treeoflife-row">
         <div className="flex-col treeoflife-col-one">
-          <div className="item taller" style={{backgroundImage: `url(img/pents01.jpg)`}}>
+          <div className="item taller"
+            style={{backgroundImage: `url(${this.props.cards[2].path})`}}>
             <h2>Card 3</h2>
           </div>
-          <div className="item taller" style={{backgroundImage: `url(img/pents02.jpg)`}}>
+          <div className="item taller"
+            style={{backgroundImage: `url(${this.props.cards[4].path})`}}>
             <h2>Card 5</h2>
           </div>
-          <div className="item taller" style={{backgroundImage: `url(img/pents03.jpg)`}}>
+          <div className="item taller"
+            style={{backgroundImage: `url(${this.props.cards[7].path})`}}>
             <h2>Card 8</h2>
           </div>
         </div>
         <div className="flex-col">
-          <div className="item taller" style={{backgroundImage: `url(img/pents04.jpg)`}}>
+          <a href="http://google.com" target="_blank"><div className="item taller"
+            style={{backgroundImage: `url(${this.props.cards[0].path})`}}>
             <h2>Card 1</h2>
-          </div>
-          <div className="item taller treeoflife-card-six" style={{backgroundImage: `url(img/pents05.jpg)`}}>
+          </div></a>
+          <div className="item taller treeoflife-card-six"
+            style={{backgroundImage: `url(${this.props.cards[5].path})`}}>
             <h2>Card 6</h2>
           </div>
-          <div className="item taller" style={{backgroundImage: `url(img/pents06.jpg)`}}>
+          <div className="item taller"
+            style={{backgroundImage: `url(${this.props.cards[8].path})`}}>
             <h2>Card 9</h2>
           </div>
-          <div className="item taller" style={{backgroundImage: `url(img/pents07.jpg)`}}>
+          <div className="item taller"
+            style={{backgroundImage: `url(${this.props.cards[9].path})`}}>
             <h2>Card 10</h2>
           </div>
         </div>
         <div className="flex-col treeoflife-col-three">
-          <div className="item taller" style={{backgroundImage: `url(img/pents08.jpg)`}}>
+          <div className="item taller"
+            style={{backgroundImage: `url(${this.props.cards[1].path})`}}>
             <h2>Card 2</h2>
           </div>
-          <div className="item taller" style={{backgroundImage: `url(img/pents09.jpg)`}}>
+          <div className="item taller"
+            style={{backgroundImage: `url(${this.props.cards[3].path})`}}>
             <h2>Card 4</h2>
           </div>
-          <div className="item taller" style={{backgroundImage: `url(img/pents10.jpg)`}}>
+          <div className="item taller"
+            style={{backgroundImage: `url(${this.props.cards[6].path})`}}>
             <h2>Card 7</h2>
           </div>
         </div>
