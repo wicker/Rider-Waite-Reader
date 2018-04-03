@@ -66,9 +66,64 @@ class FormGetAReading extends Component {
     event.preventDefault();
 
     // calculate cards
-    this.setState({cardResult: this.props.cards[0]})
+    switch (this.state.layout) {
+      case 'onecard':
+        this.setState({
+          cardResult: this.getCards(1),
+          getReading: true
+        })
+        break;
+      case 'threecard':
+        this.setState({
+          cardResult: this.getCards(3),
+          getReading: true
+        })
+        break;
+      case 'directional':
+        this.setState({
+          cardResult: this.getCards(6),
+          getReading: true
+        })
+        break;
+      case 'celticcross':
+        this.setState({
+          cardResult: this.getCards(10),
+          getReading: true
+        })
+        break;
+      case 'treeoflife':
+        this.setState({
+          cardResult: this.getCards(10),
+          getReading: true
+        })
+        break
+      default:
+        this.setState({
+          cardResult: this.getCards(1),
+          getReading: true
+        })
+    }
+  }
 
-    this.setState({getReading: true})
+
+  // Return an array with the desired number of cards.
+  // Each time a card is chosen, remove it from the deck.
+  getCards(howMany) {
+
+    var fullTarotDeck = this.props.cards;
+    var numCardsLeftInFullTarotDeck = 78;
+
+    var dealtCards = [];
+    var randCard = 0;
+
+    for (var i = 0; i < howMany; i++) {
+      randCard = Math.floor(Math.random() * (numCardsLeftInFullTarotDeck - 1) + 1);
+      dealtCards.push(fullTarotDeck[randCard]);
+      fullTarotDeck.splice(randCard, 1);
+      numCardsLeftInFullTarotDeck--;
+    }
+    console.log(dealtCards);
+    return dealtCards
   }
 
   render() {
@@ -168,7 +223,7 @@ class Layouts extends Component {
 class LayoutOneCard extends Component {
 
   static propTypes = {
-    card: PropTypes.object.isRequired,
+    card: PropTypes.array.isRequired,
     question: PropTypes.string.isRequired
   }
 
@@ -192,7 +247,7 @@ class LayoutOneCard extends Component {
         }
 					<div className="flex-row cards">
 						<div className="flex-col">
-							<div className="item"  style={{backgroundImage: `url(${this.props.card.path})`}} />
+              <div className="item"  style={{backgroundImage: `url(${this.props.card[0].path})`}} />
 						</div>
 					</div>
       </div>
@@ -435,27 +490,27 @@ class App extends Component {
       { 'name': 'Queen of Pentacles', 'path': 'img/pents13.jpg'},
       { 'name': 'King of Pentacles', 'path': 'img/pents14.jpg'},
       { 'name': 'The Fool', 'path': 'img/tarot-0-fool.jpg'},
-      { 'name': '', 'path': 'img/tarot-1-magician.jpg'},
-      { 'name': '', 'path': 'img/tarot-2-high-priestess.jpg'},
-      { 'name': '', 'path': 'img/tarot-3-the-empress.jpg'},
-      { 'name': '', 'path': 'img/tarot-4-the-emperor.jpg'},
-      { 'name': '', 'path': 'img/tarot-5-the-hierophant.jpg'},
-      { 'name': '', 'path': 'img/tarot-6-the-lovers.jpg'},
-      { 'name': '', 'path': 'img/tarot-7-the-chariot.jpg'},
-      { 'name': '', 'path': 'img/tarot-8-strength.jpg'},
-      { 'name': '', 'path': 'img/tarot-9-hermit.jpg'},
-      { 'name': '', 'path': 'img/tarot-10-wheel-of-fortune.jpg'},
-      { 'name': '', 'path': 'img/tarot-11-justice.jpg'},
-      { 'name': '', 'path': 'img/tarot-12-the-hanged-man.jpg'},
-      { 'name': '', 'path': 'img/tarot-13-death.jpg'},
-      { 'name': '', 'path': 'img/tarot-14-temperance.jpg'},
-      { 'name': '', 'path': 'img/tarot-15-the-devil.jpg'},
-      { 'name': '', 'path': 'img/tarot-16-the-tower.jpg'},
-      { 'name': '', 'path': 'img/tarot-17-the-star.jpg'},
-      { 'name': '', 'path': 'img/tarot-18-the-moon.jpg'},
-      { 'name': '', 'path': 'img/tarot-19-the-sun.jpg'},
-      { 'name': '', 'path': 'img/tarot-20-judgement.jpg'},
-      { 'name': '', 'path': 'img/tarot-21-the-world.jpg'}
+      { 'name': 'The Magician', 'path': 'img/tarot-1-magician.jpg'},
+      { 'name': 'The High Priestess', 'path': 'img/tarot-2-high-priestess.jpg'},
+      { 'name': 'The Empress', 'path': 'img/tarot-3-the-empress.jpg'},
+      { 'name': 'The Emperor', 'path': 'img/tarot-4-the-emperor.jpg'},
+      { 'name': 'The Hierophant', 'path': 'img/tarot-5-the-hierophant.jpg'},
+      { 'name': 'The Lovers', 'path': 'img/tarot-6-the-lovers.jpg'},
+      { 'name': 'The Chariot', 'path': 'img/tarot-7-the-chariot.jpg'},
+      { 'name': 'Strength', 'path': 'img/tarot-8-strength.jpg'},
+      { 'name': 'The Hermit', 'path': 'img/tarot-9-hermit.jpg'},
+      { 'name': 'Wheel of Fortune', 'path': 'img/tarot-10-wheel-of-fortune.jpg'},
+      { 'name': 'Justice', 'path': 'img/tarot-11-justice.jpg'},
+      { 'name': 'The Hanged Man', 'path': 'img/tarot-12-the-hanged-man.jpg'},
+      { 'name': 'Death', 'path': 'img/tarot-13-death.jpg'},
+      { 'name': 'Temperance', 'path': 'img/tarot-14-temperance.jpg'},
+      { 'name': 'The Devil', 'path': 'img/tarot-15-the-devil.jpg'},
+      { 'name': 'The Tower', 'path': 'img/tarot-16-the-tower.jpg'},
+      { 'name': 'The Star', 'path': 'img/tarot-17-the-star.jpg'},
+      { 'name': 'The Moon', 'path': 'img/tarot-18-the-moon.jpg'},
+      { 'name': 'The Sun', 'path': 'img/tarot-19-the-sun.jpg'},
+      { 'name': 'Judgement', 'path': 'img/tarot-20-judgement.jpg'},
+      { 'name': 'The World', 'path': 'img/tarot-21-the-world.jpg'}
     ]
   }
 
