@@ -83,22 +83,213 @@ class Layouts extends Component {
 
   render() {
     return (
-            <div>
+      <div>
 				<section className="reading" style={{border: 0}}>
 					<h1>Layouts</h1>
 				</section>
 
-				<section className="reading">
+        <LayoutOneCard />
+
+        <LayoutThreeCards />
+
+        <LayoutDirectional />
+
+        <LayoutCelticCross />
+
+        <LayoutTreeOfLife />
+
+      </div>
+
+    )
+  }
+}
+
+class LayoutOneCard extends Component {
+
+  render() {
+    return (
+      <div className="reading">
 					<h1>One Card</h1>
 					<p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
 					<div className="flex-row cards">
 						<div className="flex-col">
-							<div className="item"  style={{backgroundImage: `url("img/pents09.jpg")`}}>
-							</div>
+							<div className="item"  style={{backgroundImage: `url(img/pents09.jpg)`}} />
 						</div>
 					</div>
-				</section>
-            </div>
+      </div>
+
+    )
+  }
+}
+
+class LayoutThreeCards extends Component {
+
+  render() {
+    return (
+
+    <div className="reading">
+      <h1>Three Card</h1>
+      <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p> 
+      <div className="flex-row cards">
+        <div className="flex-col">
+          <div className="item"  style={{backgroundImage: `url(img/tarot-13-death.jpg)`}}>
+            <h2>Past</h2>
+          </div>
+        </div>
+        <div className="flex-col">
+          <div className="item"  style={{backgroundImage: `url(img/tarot-6-the-lovers.jpg)`}}>
+            <h2>Present</h2>
+          </div>
+        </div>
+        <div className="flex-col">
+          <div className="item"  style={{backgroundImage: `url(img/tarot-9-hermit.jpg)`}}>
+            <h2>Future</h2>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    )
+  }
+}
+
+class LayoutDirectional extends Component {
+
+  render() {
+    return (
+    <div className="reading">
+      <h1>Directional Layout</h1>
+      <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p> 
+      <div className="flex-row cards">
+        <div className="flex-col">
+          <div className="item" style={{backgroundImage: `url(img/pents09.jpg)`}}>
+            <h2>West</h2>
+          </div>
+        </div>
+        <div className="flex-col">
+          <div className="item directional-north" style={{backgroundImage: `url(img/cups07.jpg)`}}>
+            <h2>North</h2>
+          </div>
+          <div className="item directional-center" style={{backgroundImage: `url(img/swords03.jpg)`}}>
+            <h2>Center</h2>
+          </div>
+          <div className="item rotated directional-union" style={{backgroundImage: `url(img/pents01.jpg)`}}>
+            <h2>Union</h2>
+          </div>
+          <div className="item" style={{backgroundImage: `url(img/wands10.jpg)`}}>
+            <h2>South</h2>
+          </div>
+        </div>
+        <div className="flex-col">
+          <div className="item" style={{backgroundImage: `url(img/wands04.jpg)`}}>
+            <h2>East</h2>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    )
+  }
+}
+
+class LayoutCelticCross extends Component {
+
+  render() {
+    return (
+    <div className="reading">
+      <h1>Celtic Cross</h1>
+      <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p> 
+      <div className="flex-row cards">
+        <div className="flex-col">
+          <div className="item" style={{backgroundImage: `url(img/cups02.jpg)`}}>
+            <h2>Card 4</h2>
+          </div>
+        </div>
+        <div className="flex-col celticcross-col-second">
+          <div className="item" style={{backgroundImage: `url(img/swords07.jpg)`}}>
+            <h2>Card 5</h2>
+          </div>
+          <div className="item celticcross-card-one" style={{backgroundImage: `url(img/tarot-0-fool.jpg)`}}>
+            <h2>Card 1</h2>
+          </div>
+          <div className="item rotated celticcross-card-two" style={{backgroundImage: `url(img/tarot-13-death.jpg)`}}>
+            <h2>Card 2</h2>
+          </div>
+          <div className="item celticcross-card-three" style={{backgroundImage: `url(img/pents01.jpg)`}}>
+            <h2>Card 3</h2>
+          </div>
+        </div>
+        <div className="flex-col celticcross-col-third">
+          <div className="item" style={{backgroundImage: `url(img/swords10.jpg)`}}>
+            <h2>Card 6</h2>
+          </div>
+        </div>
+        <div className="flex-col">
+          <div className="item taller" style={{backgroundImage: `url(img/cups07.jpg)`}}>
+            <h2>Card 10</h2>
+          </div>
+          <div className="item taller" style={{backgroundImage: `url(img/cups13.jpg)`}}>
+            <h2>Card 9</h2>
+          </div>
+          <div className="item taller" style={{backgroundImage: `url(img/cups01.jpg)`}}>
+            <h2>Card 8</h2>
+          </div>
+          <div className="item taller" style={{backgroundImage: `url(img/cups09.jpg)`}}>
+            <h2>Card 7</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    )
+  }
+}
+
+class LayoutTreeOfLife extends Component {
+
+  render() {
+    return (
+      <div className="reading">
+      <h1>Tree of Life</h1>
+      <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p> 
+      <div className="flex-row cards treeoflife-row">
+        <div className="flex-col treeoflife-col-one">
+          <div className="item taller" style={{backgroundImage: `url(img/pents01.jpg)`}}>
+            <h2>Card 3</h2>
+          </div>
+          <div className="item taller" style={{backgroundImage: `url(img/pents02.jpg)`}}>
+            <h2>Card 5</h2>
+          </div>
+          <div className="item taller" style={{backgroundImage: `url(img/pents03.jpg)`}}>
+            <h2>Card 8</h2>
+          </div>
+        </div>
+        <div className="flex-col">
+          <div className="item taller" style={{backgroundImage: `url(img/pents04.jpg)`}}>
+            <h2>Card 1</h2>
+          </div>
+          <div className="item taller treeoflife-card-six" style={{backgroundImage: `url(img/pents05.jpg)`}}>
+            <h2>Card 6</h2>
+          </div>
+          <div className="item taller" style={{backgroundImage: `url(img/pents06.jpg)`}}>
+            <h2>Card 9</h2>
+          </div>
+          <div className="item taller" style={{backgroundImage: `url(img/pents07.jpg)`}}>
+            <h2>Card 10</h2>
+          </div>
+        </div>
+        <div className="flex-col treeoflife-col-three">
+          <div className="item taller" style={{backgroundImage: `url(img/pents08.jpg)`}}>
+            <h2>Card 2</h2>
+          </div>
+          <div className="item taller" style={{backgroundImage: `url(img/pents09.jpg)`}}>
+            <h2>Card 4</h2>
+          </div>
+          <div className="item taller" style={{backgroundImage: `url(img/pents10.jpg)`}}>
+            <h2>Card 7</h2>
+          </div>
+        </div>
+      </div>
+      </div>
 
     )
   }
