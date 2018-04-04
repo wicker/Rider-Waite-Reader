@@ -49,6 +49,19 @@ h2 {
   font-size: 1.4em;
 }
 
+h3 { 
+  text-align: center;
+  margin: 0 auto;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 1.4em;
+  font-family: 'Dancing Script', cursive;
+  padding: 20px 0 0 0;
+}
+
 .subtitle {
   font-size: 1.2em;
   text-align:center;
@@ -66,13 +79,17 @@ h2 {
   padding: 30px;
 }
 
+.card-description {
+  padding: 30px;
+}
+
 .item {
   border: 3px solid #000;
   flex: 1;
   margin: 10px;
-  min-height: 200px;
-  max-height: 200px;
-  width: 110px;
+  min-height: 350px;
+  max-height: 350px;
+  width: 200px;
   background-size: cover;
 }
 
@@ -146,3 +163,35 @@ h2 {
 .treeoflife-card-six {
   margin-top: 200px;
 }
+
+label:hover {
+  background-color: #C8E6C9;
+}
+
+label {
+	float:left;
+	margin:4px;
+	background-color:#EFEFEF;
+}
+
+label span {
+	text-align:center;
+	padding:6px 0px;
+	display:block;
+  font-size: 1em;
+}
+
+label input {
+  position:absolute;
+  top:-20px;
+}
+
+label input:checked + span {
+	background-color:#404040;
+	color:#F7F7F7;
+}
+
+.clear {
+  clear: both;
+}
+
