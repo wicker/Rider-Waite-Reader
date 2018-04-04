@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import './App.css'
 import * as TarotCards from './utils/cards.js'
 import * as TarotSpreads from './utils/spreads.js'
+import RadioButton from 'material-ui/RadioButton'
+import FlatButton from 'material-ui/FlatButton'
 
 class Header extends Component {
 
@@ -12,7 +14,6 @@ class Header extends Component {
 
       <header>
         <h1><a href="/">The Rider-Waite Tarot Reader</a></h1>
-        <div className="subtitle">Get a free reading!</div>
       </header>
 
     )
@@ -157,6 +158,8 @@ class FormGetAReading extends Component {
                     <SpreadThreeCard
                       question={this.state.question}
                       cards={this.state.cardResult}
+                      reversed={this.state.reversed}
+                      focus={this.state.focus}
                     />
                     <Footer />
                   </div>
@@ -166,6 +169,8 @@ class FormGetAReading extends Component {
                     <SpreadDirectional
                       question={this.state.question}
                       cards={this.state.cardResult}
+                      reversed={this.state.reversed}
+                      focus={this.state.focus}
                     />
                     <Footer />
                   </div>
@@ -175,6 +180,8 @@ class FormGetAReading extends Component {
                     <SpreadCelticCross
                       question={this.state.question}
                       cards={this.state.cardResult}
+                      reversed={this.state.reversed}
+                      focus={this.state.focus}
                     />
                     <Footer />
                   </div>
@@ -184,6 +191,8 @@ class FormGetAReading extends Component {
                     <SpreadTreeOfLife
                       question={this.state.question}
                       cards={this.state.cardResult}
+                      reversed={this.state.reversed}
+                      focus={this.state.focus}
                     />
                     <CardDescriptions />
                     <Footer />
@@ -196,46 +205,48 @@ class FormGetAReading extends Component {
       return (
         <div>
           <section className="reading">
-            <h1>Get a Reading</h1>
             <form onSubmit={this.handleSubmit}>
-              <p>
-                Enter your question:
+              <p className="clear">
+                <h4>Enter your question</h4>
                 <input type="text" name="question" onChange={this.handleChange}/>
               </p>
-              <p>
-                Which layout?<br />
-                <input type="radio" name="layout" value="onecard"
-                  defaultChecked onChange={this.handleChange}/> One Card
-                <input type="radio" name="layout" value="threecard"
-                  onChange={this.handleChange}/> Three Cards
-                <input type="radio" name="layout" value="directional"
-                  onChange={this.handleChange}/> Directional
-                <input type="radio" name="layout" value="celticcross"
-                  onChange={this.handleChange}/> Celtic Cross
-                <input type="radio" name="layout" value="treeoflife"
-                  onChange={this.handleChange}/> Tree of Life
+              <p className="clear">
+                <h4>Tarot spread</h4>
+                <label><input type="radio" name="layout" value="onecard"
+                  defaultChecked onChange={this.handleChange}/><span>One Card</span></label>
+                <label><input type="radio" name="layout" value="threecard"
+                  onChange={this.handleChange}/><span>Three Cards</span></label>
+                <label><input type="radio" name="layout" value="directional"
+                  onChange={this.handleChange}/><span>Directional</span></label>
+                <label><input type="radio" name="layout" value="celticcross"
+                  onChange={this.handleChange}/><span>Celtic Cross</span></label>
+                <label><input type="radio" name="layout" value="treeoflife"
+                  onChange={this.handleChange}/><span>Tree of Life</span></label>
               </p>
-              <p>
-                Focus of Reading?<br />
-                <input type="radio" name="focus" value="none"
-                  onChange={this.handleChange} defaultChecked /> None
-                <input type="radio" name="focus" value="relationships"
-                  onChange={this.handleChange}/> Relationships
-                <input type="radio" name="focus" value="work"
-                  onChange={this.handleChange}/> Work
-                <input type="radio" name="focus" value="spirituality"
-                  onChange={this.handleChange}/> Spirituality
-                <input type="radio" name="focus" value="personalgrowth"
-                  onChange={this.handleChange}/> Personal Growth
-                <input type="radio" name="focus" value="fortunetelling"
-                  onChange={this.handleChange}/> Fortunetelling
+              <p className="clear">
+                <h4>Focus of Reading</h4>
+                <label><input type="radio" name="focus" value="none"
+                  defaultChecked onChange={this.handleChange}/><span>None</span></label>
+                <label><input type="radio" name="focus" value="relationships"
+                  onChange={this.handleChange}/><span>Relationships</span></label>
+                <label><input type="radio" name="focus" value="work"
+                  onChange={this.handleChange}/><span>Work</span></label>
+                <label><input type="radio" name="focus" value="spiritual"
+                  onChange={this.handleChange}/><span>Spiritual</span></label>
+                <label><input type="radio" name="focus" value="personalgrowth"
+                  onChange={this.handleChange}/><span>Personal Growth</span></label>
+                <label><input type="radio" name="focus" value="fortunetelling"
+                  onChange={this.handleChange}/><span>Fortunetelling</span></label>
               </p>
-              <p>
-                Allow reversed cards?
-                <input type="checkbox" name="reversed" checked={this.state.reversed}
-                  onChange={this.handleChange}/>
+              <p className="clear">
+                <h4>Allow reversed cards?</h4>
+                <label><input type="radio" name="reversed" value="false"
+                  defaultChecked onChange={this.handleChange}/><span>No</span></label>
+                <label><input type="radio" name="reversed" value="true"
+                  onChange={this.handleChange}/><span>Yes</span></label>
+
               </p>
-              <p>
+              <p className="clear">
                 <input type="submit" value="Read the cards!" />
               </p>
             </form>
@@ -315,31 +326,41 @@ class SpreadOneCard extends Component {
             <div>
               <img src={card.imgpath} alt={card.name}/>
             </div>
-            <div>
+            <div className="card-description">
               <h2>{card.name}</h2>
-              <p><strong>{card.keywords}</strong></p>
+              <h3>{card.keywords}</h3>
               { reversed
                 ? <p>{ card.shadow }</p>
                 : <p>{ card.light }</p>
               }
               { focus === 'work'
-                ? <p>{ card.focus_work }</p>
+                ? <div>
+                    <p>{ card.focus_work }</p>
+                  </div>
                 : null
               }
               { focus === 'relationships'
-                ? <p>{ card.focus_relationships }</p>
+                ? <div>
+                    <p>{ card.focus_relationships }</p>
+                  </div>
                 : null
               }
               { focus === 'spirituality'
-                ? <p>{ card.focus_spirituality }</p>
+                ? <div>
+                    <p>{ card.focus_spirituality }</p>
+                  </div>
                 : null
               }
               { focus === 'personalgrowth'
-                ? <p>{ card.focus_personalgrowth }</p>
+                ? <div>
+                    <p>{ card.focus_personalgrowth }</p>
+                  </div>
                 : null
               }
               { focus === 'fortunetelling'
-                ? <p>{ card.focus_fortunetelling }</p>
+                ? <div>
+                    <p>{ card.focus_fortunetelling }</p>
+                  </div>
                 : null
               }
             </div>
@@ -420,31 +441,41 @@ class SpreadThreeCard extends Component {
               <div>
                 <img src={card.imgpath} alt={card.name}/>
               </div>
-              <div>
+              <div className="card-description">
                 <h2>{card.name}</h2>
-                <p><strong>{card.keywords}</strong></p>
+                <h3>{card.keywords}</h3>
                 { reversed
                   ? <p>{ card.shadow }</p>
                   : <p>{ card.light }</p>
                 }
                 { focus === 'work'
-                  ? <p>{ card.focus_work }</p>
+                  ? <div>
+                      <p>{ card.focus_work }</p>
+                    </div>
                   : null
                 }
                 { focus === 'relationships'
-                  ? <p>{ card.focus_relationships }</p>
+                  ? <div>
+                      <p>{ card.focus_relationships }</p>
+                    </div>
                   : null
                 }
                 { focus === 'spirituality'
-                  ? <p>{ card.focus_spirituality }</p>
+                  ? <div>
+                      <p>{ card.focus_spirituality }</p>
+                    </div>
                   : null
                 }
                 { focus === 'personalgrowth'
-                  ? <p>{ card.focus_personalgrowth }</p>
+                  ? <div>
+                      <p>{ card.focus_personalgrowth }</p>
+                    </div>
                   : null
                 }
                 { focus === 'fortunetelling'
-                  ? <p>{ card.focus_fortunetelling }</p>
+                  ? <div>
+                      <p>{ card.focus_fortunetelling }</p>
+                    </div>
                   : null
                 }
               </div>
@@ -541,9 +572,9 @@ class SpreadDirectional extends Component {
               <div>
                 <img src={card.imgpath} alt={card.name}/>
               </div>
-              <div>
+              <div className="card-description">
                 <h2>{card.name}</h2>
-                <p><strong>{card.keywords}</strong></p>
+                <h3>{card.keywords}</h3>
                 { reversed
                   ? <p>{ card.shadow }</p>
                   : <p>{ card.light }</p>
@@ -680,31 +711,40 @@ class SpreadCelticCross extends Component {
               <div>
                 <img src={card.imgpath} alt={card.name}/>
               </div>
-              <div>
+              <div className="card-description">
                 <h2>{card.name}</h2>
-                <p><strong>{card.keywords}</strong></p>
                 { reversed
                   ? <p>{ card.shadow }</p>
                   : <p>{ card.light }</p>
                 }
                 { focus === 'work'
-                  ? <p>{ card.focus_work }</p>
+                  ? <div>
+                      <p>{ card.focus_work }</p>
+                    </div>
                   : null
                 }
                 { focus === 'relationships'
-                  ? <p>{ card.focus_relationships }</p>
+                  ? <div>
+                      <p>{ card.focus_relationships }</p>
+                    </div>
                   : null
                 }
                 { focus === 'spirituality'
-                  ? <p>{ card.focus_spirituality }</p>
+                  ? <div>
+                      <p>{ card.focus_spirituality }</p>
+                    </div>
                   : null
                 }
                 { focus === 'personalgrowth'
-                  ? <p>{ card.focus_personalgrowth }</p>
+                  ? <div>
+                      <p>{ card.focus_personalgrowth }</p>
+                    </div>
                   : null
                 }
                 { focus === 'fortunetelling'
-                  ? <p>{ card.focus_fortunetelling }</p>
+                  ? <div>
+                      <p>{ card.focus_fortunetelling }</p>
+                    </div>
                   : null
                 }
               </div>
@@ -817,31 +857,41 @@ class SpreadTreeOfLife extends Component {
               <div>
                 <img src={card.imgpath} alt={card.name}/>
               </div>
-              <div>
+              <div className="card-description">
                 <h2>{card.name}</h2>
-                <p><strong>{card.keywords}</strong></p>
+                <h3>{card.keywords}</h3>
                 { reversed
                   ? <p>{ card.shadow }</p>
                   : <p>{ card.light }</p>
                 }
                 { focus === 'work'
-                  ? <p>{ card.focus_work }</p>
+                  ? <div>
+                      <p>{ card.focus_work }</p>
+                    </div>
                   : null
                 }
                 { focus === 'relationships'
-                  ? <p>{ card.focus_relationships }</p>
+                  ? <div>
+                      <p>{ card.focus_relationships }</p>
+                    </div>
                   : null
                 }
                 { focus === 'spirituality'
-                  ? <p>{ card.focus_spirituality }</p>
+                  ? <div>
+                      <p>{ card.focus_spirituality }</p>
+                    </div>
                   : null
                 }
                 { focus === 'personalgrowth'
-                  ? <p>{ card.focus_personalgrowth }</p>
+                  ? <div>
+                      <p>{ card.focus_personalgrowth }</p>
+                    </div>
                   : null
                 }
                 { focus === 'fortunetelling'
-                  ? <p>{ card.focus_fortunetelling }</p>
+                  ? <div>
+                      <p>{ card.focus_fortunetelling }</p>
+                    </div>
                   : null
                 }
               </div>
@@ -865,17 +915,11 @@ class App extends Component {
     return (
       <div>
         <Switch>
-          <Route exact path='/' render={({ history }) => (
+          <Route path='/' render={({ history }) => (
             <div className="primary">
               <Header />
               <FormGetAReading cards={this.state.cards}/>
             </div>          )}/>
-          <Route path='*' render={({ history }) => (
-            <div className="primary">
-              <Header />
-              <NotFound404 />
-            </div>
-          )}/>
         </Switch>
 
       </div>
