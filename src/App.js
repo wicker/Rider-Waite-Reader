@@ -12,7 +12,7 @@ class Header extends Component {
 
       <header>
         <h1><a href="/">The Rider-Waite Tarot Reader</a></h1>
-        <div class="subtitle">Get a free reading!</div>
+        <div className="subtitle">Get a free reading!</div>
       </header>
 
     )
@@ -146,6 +146,8 @@ class FormGetAReading extends Component {
                     <LayoutOneCard
                       question={this.state.question}
                       card={this.state.cardResult}
+                      reversed={this.state.reversed}
+                      focus={this.state.focus}
                     />
                     <Footer />
                   </div>
@@ -217,7 +219,7 @@ class FormGetAReading extends Component {
                 Focus of Reading?<br />
                 <input type="radio" name="focus" value="Relationships"
                   defaultChecked onChange={this.handleChange}/> Relationships
-                <input type="radio" name="focus" value="Work"
+                <input type="radio" name="focus" value="work"
                   onChange={this.handleChange}/> Work
                 <input type="radio" name="focus" value="spirituality"
                   onChange={this.handleChange}/> Spirituality
@@ -230,7 +232,8 @@ class FormGetAReading extends Component {
               </p>
               <p>
                 Allow reversed cards?
-                <input type="checkbox" name="reversed" value="reversed" />
+                <input type="checkbox" name="reversed" checked={this.state.reversed}
+                  onChange={this.handleChange}/>
               </p>
               <p>
                 <input type="submit" value="Read the cards!" />
@@ -266,12 +269,16 @@ class LayoutOneCard extends Component {
 
   static propTypes = {
     card: PropTypes.array.isRequired,
-    question: PropTypes.string.isRequired
+    question: PropTypes.string.isRequired,
+    reversed: PropTypes.bool.isRequired,
+    focus: PropTypes.string.isRequired
   }
 
   state = {
     card: this.props.card,
-    question: this.props.question
+    question: this.props.question,
+    reversed: this.props.reversed,
+    focus: this.props.focus,
   }
 
   render() {
@@ -334,14 +341,20 @@ class LayoutOneCard extends Component {
 
 class LayoutThreeCard extends Component {
 
+
   static propTypes = {
     cards: PropTypes.array.isRequired,
-    question: PropTypes.string.isRequired
+    question: PropTypes.string.isRequired,
+    reversed: PropTypes.bool.isRequired,
+    focus: PropTypes.string.isRequired
   }
 
   state = {
     cards: this.props.cards,
-    question: this.props.question
+    question: this.props.question,
+    reversed: this.props.reversed,
+    focus: this.props.focus,
+    spread: TarotSpreads.threecards
   }
 
   render() {
@@ -566,7 +579,7 @@ class LayoutTreeOfLife extends Component {
           </div>
         </div>
         <div className="flex-col">
-          <a href="http://google.com" target="_blank"><div className="item taller"
+          <a href="http://google.com" target="_blank" rel="noopener noreferrer"><div className="item taller"
             style={{backgroundImage: `url(${this.props.cards[0].imgpath})`}}>
             <h2>Card 1</h2>
           </div></a>
