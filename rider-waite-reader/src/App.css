@@ -24,6 +24,15 @@ footer {
   text-align: center;
 }
 
+footer a {
+  color: #7cedc2;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
 .primary {
   background-color: #7cedc2;
   color: #000;
@@ -32,6 +41,10 @@ footer {
 .secondary {
   background-color: #46ba92;
   color: #000;
+}
+
+.center {
+  text-align: center;
 }
 
 h1 {
@@ -119,10 +132,20 @@ h4 {
   align-items: center;
 }
 
+.rotated-reversed {
+  transform: rotate(-90deg);
+  -webkit-transform-origin: 50%  51%;
+  margin-top: -100px;
+}
+
 .rotated {
   transform: rotate(90deg);
   -webkit-transform-origin: 50%  51%;
   margin-top: -100px;
+}
+
+.reversed {
+  transform: rotate(180deg);
 }
 
 .directional-north {
@@ -195,6 +218,7 @@ label input:checked + span {
 
 form {
   margin: 20px auto;
+  padding: 0 20px;
   width: 800px;
   max-width: 100%;
 }
