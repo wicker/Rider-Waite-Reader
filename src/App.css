@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body {
   margin: 0;
@@ -58,8 +59,8 @@ h3 {
 
 h4 {
   font-size: 1.4em;
-  font-family: 'Dancing Script', cursive;
-  padding: 20px 0 0 0;
+  padding: 20px 0 10px 0;
+  margin: 0;
 }
 
 .subtitle {
@@ -164,34 +165,60 @@ h4 {
   margin-top: 200px;
 }
 
-label:hover {
-  background-color: #C8E6C9;
-}
-
 label {
 	float:left;
 	margin:4px;
-	background-color:#EFEFEF;
+  background-color: #46ba92;
+  border-radius: 10px;
 }
 
 label span {
-	text-align:center;
-	padding:6px 0px;
-	display:block;
+	text-align: center;
+	padding: 10px;
+	display: block;
   font-size: 1em;
 }
 
 label input {
   position:absolute;
-  top:-20px;
+  left:-20px;
+}
+
+label:hover {
+  background-color: #008964;
 }
 
 label input:checked + span {
-	background-color:#404040;
-	color:#F7F7F7;
+  background-color: #008964;
+  border-radius: 10px;
+}
+
+form {
+  margin: 20px auto;
+  width: 800px;
+  max-width: 100%;
 }
 
 .clear {
   clear: both;
 }
 
+.textbox {
+  background-color: #46ba92;
+  border: 0;
+  font-size: 1.2em;
+  height: 1.5em;
+  width: 100%;
+  padding: 10px;
+}
+
+.submit {
+  background-color: #46ba92;
+  font-family: 'Dancing Script', cursive;
+  margin: 20px 0;
+  font-size: 2em;
+  font-weight: bold;
+  border: 0;
+  border-radius: 10px;
+  padding: 20px;
+}
