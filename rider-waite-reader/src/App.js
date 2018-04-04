@@ -249,7 +249,7 @@ class FormGetAReading extends Component {
 class CardDescriptions extends Component {
 
   static propTypes = {
-    card: PropTypes.array.isRequired
+    card: PropTypes.object.isRequired,
   }
 
   state = {
@@ -371,37 +371,89 @@ class LayoutThreeCard extends Component {
 
   render() {
 
-    const { question } = this.state
+    const { question, cards, reversed, focus } = this.state
 
     return (
 
-    <div className="reading">
-      { question
-          ? <h1>{question}</h1>
-          : <div>
-              <h1>Three Card</h1>
-              <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
-            </div>
-      }
-      <div className="flex-row cards">
-        <div className="flex-col">
-          <div className="item" style={{backgroundImage: `url(${this.props.cards[0].imgpath})`}}>
-            <h2>Past</h2>
-          </div>
+    <div>
+      <div className="primary">
+        <div className="reading">
+          <h1>About the Three Card Layout</h1>
+            <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
         </div>
-        <div className="flex-col">
-          <div className="item" style={{backgroundImage: `url(${this.props.cards[1].imgpath})`}}>
-            <h2>Present</h2>
-          </div>
-        </div>
-        <div className="flex-col">
-          <div className="item" style={{backgroundImage: `url(${this.props.cards[2].imgpath})`}}>
-            <h2>Future</h2>
-          </div>
-        </div>
-      </div>
       </div>
 
+      <div className="secondary">
+        <div className="reading">
+          { question
+              ? <h1>{question}</h1>
+              : null
+          }
+            <div className="flex-row cards">
+              <div className="flex-col">
+                <div className="item" style={{backgroundImage: `url(${this.props.cards[0].imgpath})`}}>
+                  <h2>Past</h2>
+                </div>
+              </div>
+              <div className="flex-col">
+                <div className="item" style={{backgroundImage: `url(${this.props.cards[1].imgpath})`}}>
+                  <h2>Present</h2>
+                </div>
+              </div>
+              <div className="flex-col">
+                <div className="item" style={{backgroundImage: `url(${this.props.cards[2].imgpath})`}}>
+                  <h2>Future</h2>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <div className="primary">
+        <div className="reading">
+          <h1>Interpreting Your Reading</h1>
+
+          <div>
+          { cards.map((card) =>
+
+            <div className="flex-row">
+              <div>
+                <img src={card.imgpath} alt={card.name}/>
+              </div>
+              <div>
+                <h2>{card.name}</h2>
+                <p><strong>{card.keywords}</strong></p>
+                { reversed
+                  ? <p>{ card.shadow }</p>
+                  : <p>{ card.light }</p>
+                }
+                { focus === 'work'
+                  ? <p>{ card.focus_work }</p>
+                  : null
+                }
+                { focus === 'relationships'
+                  ? <p>{ card.focus_relationships }</p>
+                  : null
+                }
+                { focus === 'spirituality'
+                  ? <p>{ card.focus_spirituality }</p>
+                  : null
+                }
+                { focus === 'personalgrowth'
+                  ? <p>{ card.focus_personalgrowth }</p>
+                  : null
+                }
+                { focus === 'fortunetelling'
+                  ? <p>{ card.focus_fortunetelling }</p>
+                  : null
+                }
+              </div>
+            </div>
+            )}
+            </div>
+          </div>
+        </div>
+      </div>
     )
   }
 }
