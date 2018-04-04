@@ -25,7 +25,7 @@ class Footer extends Component {
     return (
 
       <footer>
-        <p>All tarot images are from Holly Voley in the public domain</p>
+        <p>This site uses public domain meanings from Mark McElroy and public domain art scanned by Holly Voley</p>
       </footer>
 
     )
@@ -142,7 +142,7 @@ class FormGetAReading extends Component {
     if (this.state.getReading) {
       switch (this.state.layout) {
         case 'onecard':
-          return (<div class="primary">
+          return (<div className="primary">
                     <LayoutOneCard
                       question={this.state.question}
                       card={this.state.cardResult}
@@ -217,8 +217,10 @@ class FormGetAReading extends Component {
               </p>
               <p>
                 Focus of Reading?<br />
-                <input type="radio" name="focus" value="Relationships"
-                  defaultChecked onChange={this.handleChange}/> Relationships
+                <input type="radio" name="focus" value="none"
+                  onChange={this.handleChange} defaultChecked /> None
+                <input type="radio" name="focus" value="relationships"
+                  onChange={this.handleChange}/> Relationships
                 <input type="radio" name="focus" value="work"
                   onChange={this.handleChange}/> Work
                 <input type="radio" name="focus" value="spirituality"
@@ -227,8 +229,6 @@ class FormGetAReading extends Component {
                   onChange={this.handleChange}/> Personal Growth
                 <input type="radio" name="focus" value="fortunetelling"
                   onChange={this.handleChange}/> Fortunetelling
-                <input type="radio" name="focus" value="none"
-                  onChange={this.handleChange}/> None
               </p>
               <p>
                 Allow reversed cards?
@@ -275,7 +275,7 @@ class LayoutOneCard extends Component {
   }
 
   state = {
-    card: this.props.card,
+    card: this.props.card[0],
     question: this.props.question,
     reversed: this.props.reversed,
     focus: this.props.focus,
@@ -283,7 +283,7 @@ class LayoutOneCard extends Component {
 
   render() {
 
-    const { question } = this.state
+    const { question, card, reversed, focus } = this.state;
 
     return (
     <div>
@@ -302,7 +302,7 @@ class LayoutOneCard extends Component {
           }
             <div className="flex-row cards">
               <div className="flex-col">
-                <div className="item" style={{backgroundImage: `url(${this.props.card[0].imgpath})`}} />
+                <div className="item" style={{backgroundImage: `url(${card.imgpath})`}} />
               </div>
             </div>
         </div>
@@ -313,23 +313,35 @@ class LayoutOneCard extends Component {
           <h1>Interpreting Your Reading</h1>
           <div className="flex-row">
             <div>
-              <h2>Position 1</h2>
-              <img src={this.props.card[0].imgpath} />
+              <img src={card.imgpath} alt={card.name}/>
             </div>
             <div>
-              <p>Spread position meaning</p>
-            </div>
-          </div>
-          <div className="flex-row">
-            <div>
-              <img src={this.props.card[0].imgpath} />
-              <p>Meanings</p>
-            </div>
-            <div>
-              <h2>Card Name</h2>
-              <p><strong>Keywords</strong></p>
-              <p>if reversed, show shadow else show light</p>
-              <p>switch focus, show results</p>
+              <h2>{card.name}</h2>
+              <p><strong>{card.keywords}</strong></p>
+              { reversed
+                ? <p>{ card.shadow }</p>
+                : <p>{ card.light }</p>
+              }
+              { focus === 'work'
+                ? <p>{ card.focus_work }</p>
+                : null
+              }
+              { focus === 'relationships'
+                ? <p>{ card.focus_relationships }</p>
+                : null
+              }
+              { focus === 'spirituality'
+                ? <p>{ card.focus_spirituality }</p>
+                : null
+              }
+              { focus === 'personalgrowth'
+                ? <p>{ card.focus_personalgrowth }</p>
+                : null
+              }
+              { focus === 'fortunetelling'
+                ? <p>{ card.focus_fortunetelling }</p>
+                : null
+              }
             </div>
           </div>
         </div>
