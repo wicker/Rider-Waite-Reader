@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import './App.css'
 import * as TarotCards from './utils/cards.js'
+import * as TarotSpreads from './utils/spreads.js'
 
 class Header extends Component {
 
