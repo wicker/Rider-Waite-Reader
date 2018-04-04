@@ -143,7 +143,7 @@ class FormGetAReading extends Component {
       switch (this.state.layout) {
         case 'onecard':
           return (<div className="primary">
-                    <LayoutOneCard
+                    <SpreadOneCard
                       question={this.state.question}
                       card={this.state.cardResult}
                       reversed={this.state.reversed}
@@ -154,7 +154,7 @@ class FormGetAReading extends Component {
                  )
         case 'threecard':
           return (<div>
-                    <LayoutThreeCard
+                    <SpreadThreeCard
                       question={this.state.question}
                       cards={this.state.cardResult}
                     />
@@ -163,7 +163,7 @@ class FormGetAReading extends Component {
                  )
         case 'directional':
           return (<div>
-                    <LayoutDirectional
+                    <SpreadDirectional
                       question={this.state.question}
                       cards={this.state.cardResult}
                     />
@@ -172,7 +172,7 @@ class FormGetAReading extends Component {
                  )
         case 'celticcross':
           return (<div>
-                    <LayoutCelticCross
+                    <SpreadCelticCross
                       question={this.state.question}
                       cards={this.state.cardResult}
                     />
@@ -181,7 +181,7 @@ class FormGetAReading extends Component {
                  )
         case 'treeoflife':
           return (<div>
-                    <LayoutTreeOfLife
+                    <SpreadTreeOfLife
                       question={this.state.question}
                       cards={this.state.cardResult}
                     />
@@ -265,7 +265,7 @@ class CardDescriptions extends Component {
   }
 }
 
-class LayoutOneCard extends Component {
+class SpreadOneCard extends Component {
 
   static propTypes = {
     card: PropTypes.array.isRequired,
@@ -289,7 +289,7 @@ class LayoutOneCard extends Component {
     <div>
       <div className="primary">
         <div className="reading">
-          <h1>About the One Card Layout</h1>
+          <h1>About the One Card Spread</h1>
             <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
         </div>
       </div>
@@ -351,7 +351,7 @@ class LayoutOneCard extends Component {
   }
 }
 
-class LayoutThreeCard extends Component {
+class SpreadThreeCard extends Component {
 
 
   static propTypes = {
@@ -378,7 +378,7 @@ class LayoutThreeCard extends Component {
     <div>
       <div className="primary">
         <div className="reading">
-          <h1>About the Three Card Layout</h1>
+          <h1>About the Three Card Spread</h1>
             <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
         </div>
       </div>
@@ -458,60 +458,119 @@ class LayoutThreeCard extends Component {
   }
 }
 
-class LayoutDirectional extends Component {
+class SpreadDirectional extends Component {
 
   static propTypes = {
     cards: PropTypes.array.isRequired,
-    question: PropTypes.string.isRequired
+    question: PropTypes.string.isRequired,
+    reversed: PropTypes.bool.isRequired,
+    focus: PropTypes.string.isRequired
   }
 
   state = {
     cards: this.props.cards,
-    question: this.props.question
+    question: this.props.question,
+    reversed: this.props.reversed,
+    focus: this.props.focus,
+    spread: TarotSpreads.threecards
   }
 
   render() {
 
-    const { question } = this.state
+    const { question, cards, reversed, focus } = this.state
 
     return (
-      <div className="reading">
-        { question
-            ? <h1>{question}</h1>
-            : <div>
-                <h1>Directional Spread</h1>
-                <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
+
+    <div>
+      <div className="primary">
+        <div className="reading">
+          <h1>About the Directional Spread</h1>
+          <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
+        </div>
+      </div>
+
+      <div className="secondary">
+        <div className="reading">
+          { question
+              ? <h1>{question}</h1>
+              : null
+          }
+          <div className="flex-row cards">
+            <div className="flex-col">
+              <div className="item"
+                style={{backgroundImage: `url(${this.props.cards[4].imgpath})`}}>
+                <h2>West</h2>
               </div>
-        }
-        <div className="flex-row cards">
-          <div className="flex-col">
-            <div className="item"
-              style={{backgroundImage: `url(${this.props.cards[4].imgpath})`}}>
-              <h2>West</h2>
+            </div>
+            <div className="flex-col">
+              <div className="item directional-north"
+                style={{backgroundImage: `url(${this.props.cards[5].imgpath})`}}>
+                <h2>North</h2>
+              </div>
+              <div className="item directional-center"
+                style={{backgroundImage: `url(${this.props.cards[0].imgpath})`}}>
+                <h2>Center</h2>
+              </div>
+              <div className="item rotated directional-union"
+                style={{backgroundImage: `url(${this.props.cards[1].imgpath})`}}>
+                <h2>Union</h2>
+              </div>
+              <div className="item"
+                style={{backgroundImage: `url(${this.props.cards[3].imgpath})`}}>
+                <h2>South</h2>
+              </div>
+            </div>
+            <div className="flex-col">
+              <div className="item"
+                style={{backgroundImage: `url(${this.props.cards[2].imgpath})`}}>
+                <h2>East</h2>
+              </div>
             </div>
           </div>
-          <div className="flex-col">
-            <div className="item directional-north"
-              style={{backgroundImage: `url(${this.props.cards[5].imgpath})`}}>
-              <h2>North</h2>
+        </div>
+      </div>
+
+      <div className="primary">
+        <div className="reading">
+          <h1>Interpreting Your Reading</h1>
+
+          <div>
+          { cards.map((card) =>
+
+            <div className="flex-row">
+              <div>
+                <img src={card.imgpath} alt={card.name}/>
+              </div>
+              <div>
+                <h2>{card.name}</h2>
+                <p><strong>{card.keywords}</strong></p>
+                { reversed
+                  ? <p>{ card.shadow }</p>
+                  : <p>{ card.light }</p>
+                }
+                { focus === 'work'
+                  ? <p>{ card.focus_work }</p>
+                  : null
+                }
+                { focus === 'relationships'
+                  ? <p>{ card.focus_relationships }</p>
+                  : null
+                }
+                { focus === 'spirituality'
+                  ? <p>{ card.focus_spirituality }</p>
+                  : null
+                }
+                { focus === 'personalgrowth'
+                  ? <p>{ card.focus_personalgrowth }</p>
+                  : null
+                }
+                { focus === 'fortunetelling'
+                  ? <p>{ card.focus_fortunetelling }</p>
+                  : null
+                }
+              </div>
             </div>
-            <div className="item directional-center"
-              style={{backgroundImage: `url(${this.props.cards[0].imgpath})`}}>
-              <h2>Center</h2>
-            </div>
-            <div className="item rotated directional-union"
-              style={{backgroundImage: `url(${this.props.cards[1].imgpath})`}}>
-              <h2>Union</h2>
-            </div>
-            <div className="item"
-              style={{backgroundImage: `url(${this.props.cards[3].imgpath})`}}>
-              <h2>South</h2>
-            </div>
-          </div>
-          <div className="flex-col">
-            <div className="item"
-              style={{backgroundImage: `url(${this.props.cards[2].imgpath})`}}>
-              <h2>East</h2>
+            )}
             </div>
           </div>
         </div>
@@ -520,163 +579,278 @@ class LayoutDirectional extends Component {
   }
 }
 
-class LayoutCelticCross extends Component {
+class SpreadCelticCross extends Component {
 
   static propTypes = {
     cards: PropTypes.array.isRequired,
-    question: PropTypes.string.isRequired
+    question: PropTypes.string.isRequired,
+    reversed: PropTypes.bool.isRequired,
+    focus: PropTypes.string.isRequired
   }
 
   state = {
     cards: this.props.cards,
-    question: this.props.question
+    question: this.props.question,
+    reversed: this.props.reversed,
+    focus: this.props.focus,
+    spread: TarotSpreads.threecards
   }
 
   render() {
 
-    const { question } = this.state
+    const { question, cards, reversed, focus } = this.state
 
     return (
-    <div className="reading">
-        { question
-            ? <h1>{question}</h1>
-            : <div>
-                <h1>Celtic Cross</h1>
-                <h1>Directional Spread</h1>
-                <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
+
+    <div>
+      <div className="primary">
+        <div className="reading">
+          <h1>About the Celtic Cross Spread</h1>
+          <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
+        </div>
+      </div>
+
+      <div className="secondary">
+        <div className="reading">
+          { question
+              ? <h1>{question}</h1>
+              : null
+          }
+          <div className="flex-row cards">
+            <div className="flex-col">
+              <div className="item"
+                style={{backgroundImage: `url(${this.props.cards[3].imgpath})`}}>
+                <h2>Card 4</h2>
               </div>
-        }
-      <div className="flex-row cards">
-        <div className="flex-col">
-          <div className="item"
-            style={{backgroundImage: `url(${this.props.cards[3].imgpath})`}}>
-            <h2>Card 4</h2>
-          </div>
-        </div>
-        <div className="flex-col celticcross-col-second">
-          <div className="item"
-            style={{backgroundImage: `url(${this.props.cards[4].imgpath})`}}>
-            <h2>Card 5</h2>
-          </div>
-          <div className="item celticcross-card-one"
-            style={{backgroundImage: `url(${this.props.cards[0].imgpath})`}}>
-            <h2>Card 1</h2>
-          </div>
-          <div className="item rotated celticcross-card-two"
-            style={{backgroundImage: `url(${this.props.cards[1].imgpath})`}}>
-            <h2>Card 2</h2>
-          </div>
-          <div className="item celticcross-card-three"
-            style={{backgroundImage: `url(${this.props.cards[2].imgpath})`}}>
-            <h2>Card 3</h2>
-          </div>
-        </div>
-        <div className="flex-col celticcross-col-third">
-          <div className="item"
-            style={{backgroundImage: `url(${this.props.cards[5].imgpath})`}}>
-            <h2>Card 6</h2>
-          </div>
-        </div>
-        <div className="flex-col">
-          <div className="item taller"
-            style={{backgroundImage: `url(${this.props.cards[9].imgpath})`}}>
-            <h2>Card 10</h2>
-          </div>
-          <div className="item taller"
-            style={{backgroundImage: `url(${this.props.cards[8].imgpath})`}}>
-            <h2>Card 9</h2>
-          </div>
-          <div className="item taller"
-           style={{backgroundImage: `url(${this.props.cards[7].imgpath})`}}>
-            <h2>Card 8</h2>
-          </div>
-          <div className="item taller"
-            style={{backgroundImage: `url(${this.props.cards[6].imgpath})`}}>
-            <h2>Card 7</h2>
+            </div>
+            <div className="flex-col celticcross-col-second">
+              <div className="item"
+                style={{backgroundImage: `url(${this.props.cards[4].imgpath})`}}>
+                <h2>Card 5</h2>
+              </div>
+              <div className="item celticcross-card-one"
+                style={{backgroundImage: `url(${this.props.cards[0].imgpath})`}}>
+                <h2>Card 1</h2>
+              </div>
+              <div className="item rotated celticcross-card-two"
+                style={{backgroundImage: `url(${this.props.cards[1].imgpath})`}}>
+                <h2>Card 2</h2>
+              </div>
+              <div className="item celticcross-card-three"
+                style={{backgroundImage: `url(${this.props.cards[2].imgpath})`}}>
+                <h2>Card 3</h2>
+              </div>
+            </div>
+            <div className="flex-col celticcross-col-third">
+              <div className="item"
+                style={{backgroundImage: `url(${this.props.cards[5].imgpath})`}}>
+                <h2>Card 6</h2>
+              </div>
+            </div>
+            <div className="flex-col">
+              <div className="item taller"
+                style={{backgroundImage: `url(${this.props.cards[9].imgpath})`}}>
+                <h2>Card 10</h2>
+              </div>
+              <div className="item taller"
+                style={{backgroundImage: `url(${this.props.cards[8].imgpath})`}}>
+                <h2>Card 9</h2>
+              </div>
+              <div className="item taller"
+               style={{backgroundImage: `url(${this.props.cards[7].imgpath})`}}>
+                <h2>Card 8</h2>
+              </div>
+              <div className="item taller"
+                style={{backgroundImage: `url(${this.props.cards[6].imgpath})`}}>
+                <h2>Card 7</h2>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <div className="primary">
+        <div className="reading">
+          <h1>Interpreting Your Reading</h1>
+
+          <div>
+          { cards.map((card) =>
+
+            <div className="flex-row">
+              <div>
+                <img src={card.imgpath} alt={card.name}/>
+              </div>
+              <div>
+                <h2>{card.name}</h2>
+                <p><strong>{card.keywords}</strong></p>
+                { reversed
+                  ? <p>{ card.shadow }</p>
+                  : <p>{ card.light }</p>
+                }
+                { focus === 'work'
+                  ? <p>{ card.focus_work }</p>
+                  : null
+                }
+                { focus === 'relationships'
+                  ? <p>{ card.focus_relationships }</p>
+                  : null
+                }
+                { focus === 'spirituality'
+                  ? <p>{ card.focus_spirituality }</p>
+                  : null
+                }
+                { focus === 'personalgrowth'
+                  ? <p>{ card.focus_personalgrowth }</p>
+                  : null
+                }
+                { focus === 'fortunetelling'
+                  ? <p>{ card.focus_fortunetelling }</p>
+                  : null
+                }
+              </div>
+            </div>
+            )}
+            </div>
+          </div>
+        </div>
+      </div>
     )
   }
 }
 
-class LayoutTreeOfLife extends Component {
+class SpreadTreeOfLife extends Component {
 
   static propTypes = {
     cards: PropTypes.array.isRequired,
-    question: PropTypes.string.isRequired
+    question: PropTypes.string.isRequired,
+    reversed: PropTypes.bool.isRequired,
+    focus: PropTypes.string.isRequired
   }
 
   state = {
     cards: this.props.cards,
-    question: this.props.question
+    question: this.props.question,
+    reversed: this.props.reversed,
+    focus: this.props.focus,
+    spread: TarotSpreads.threecards
   }
 
   render() {
 
-    const { question } = this.state
+    const { question, cards, reversed, focus } = this.state
 
     return (
-      <div className="reading">
-        { question
-            ? <h1>{question}</h1>
-            : <div>
-                <h1>Directional Spread</h1>
-                <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
-              </div>
-        }
-      <div>Get another reading</div>
-      <div className="flex-row cards treeoflife-row">
-        <div className="flex-col treeoflife-col-one">
-          <div className="item taller"
-            style={{backgroundImage: `url(${this.props.cards[2].imgpath})`}}>
-            <h2>Card 3</h2>
-          </div>
-          <div className="item taller"
-            style={{backgroundImage: `url(${this.props.cards[4].imgpath})`}}>
-            <h2>Card 5</h2>
-          </div>
-          <div className="item taller"
-            style={{backgroundImage: `url(${this.props.cards[7].imgpath})`}}>
-            <h2>Card 8</h2>
-          </div>
+
+    <div>
+      <div className="primary">
+        <div className="reading">
+          <h1>About the Tree of Life Spread</h1>
+          <p>Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo Lorem ipsum deo</p>
         </div>
-        <div className="flex-col">
-          <a href="http://google.com" target="_blank" rel="noopener noreferrer"><div className="item taller"
-            style={{backgroundImage: `url(${this.props.cards[0].imgpath})`}}>
-            <h2>Card 1</h2>
-          </div></a>
-          <div className="item taller treeoflife-card-six"
-            style={{backgroundImage: `url(${this.props.cards[5].imgpath})`}}>
-            <h2>Card 6</h2>
-          </div>
-          <div className="item taller"
-            style={{backgroundImage: `url(${this.props.cards[8].imgpath})`}}>
-            <h2>Card 9</h2>
-          </div>
-          <div className="item taller"
-            style={{backgroundImage: `url(${this.props.cards[9].imgpath})`}}>
-            <h2>Card 10</h2>
-          </div>
-        </div>
-        <div className="flex-col treeoflife-col-three">
-          <div className="item taller"
-            style={{backgroundImage: `url(${this.props.cards[1].imgpath})`}}>
-            <h2>Card 2</h2>
-          </div>
-          <div className="item taller"
-            style={{backgroundImage: `url(${this.props.cards[3].imgpath})`}}>
-            <h2>Card 4</h2>
-          </div>
-          <div className="item taller"
-            style={{backgroundImage: `url(${this.props.cards[6].imgpath})`}}>
-            <h2>Card 7</h2>
-          </div>
-        </div>
-      </div>
       </div>
 
+      <div className="secondary">
+        <div className="reading">
+          { question
+              ? <h1>{question}</h1>
+              : null
+          }
+          <div className="flex-row cards treeoflife-row">
+            <div className="flex-col treeoflife-col-one">
+              <div className="item taller"
+                style={{backgroundImage: `url(${this.props.cards[2].imgpath})`}}>
+                <h2>Card 3</h2>
+              </div>
+              <div className="item taller"
+                style={{backgroundImage: `url(${this.props.cards[4].imgpath})`}}>
+                <h2>Card 5</h2>
+              </div>
+              <div className="item taller"
+                style={{backgroundImage: `url(${this.props.cards[7].imgpath})`}}>
+                <h2>Card 8</h2>
+              </div>
+            </div>
+            <div className="flex-col">
+              <a href="http://google.com" target="_blank" rel="noopener noreferrer"><div className="item taller"
+                style={{backgroundImage: `url(${this.props.cards[0].imgpath})`}}>
+                <h2>Card 1</h2>
+              </div></a>
+              <div className="item taller treeoflife-card-six"
+                style={{backgroundImage: `url(${this.props.cards[5].imgpath})`}}>
+                <h2>Card 6</h2>
+              </div>
+              <div className="item taller"
+                style={{backgroundImage: `url(${this.props.cards[8].imgpath})`}}>
+                <h2>Card 9</h2>
+              </div>
+              <div className="item taller"
+                style={{backgroundImage: `url(${this.props.cards[9].imgpath})`}}>
+                <h2>Card 10</h2>
+              </div>
+            </div>
+            <div className="flex-col treeoflife-col-three">
+              <div className="item taller"
+                style={{backgroundImage: `url(${this.props.cards[1].imgpath})`}}>
+                <h2>Card 2</h2>
+              </div>
+              <div className="item taller"
+                style={{backgroundImage: `url(${this.props.cards[3].imgpath})`}}>
+                <h2>Card 4</h2>
+              </div>
+              <div className="item taller"
+                style={{backgroundImage: `url(${this.props.cards[6].imgpath})`}}>
+                <h2>Card 7</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="primary">
+        <div className="reading">
+          <h1>Interpreting Your Reading</h1>
+
+          <div>
+          { cards.map((card) =>
+
+            <div className="flex-row">
+              <div>
+                <img src={card.imgpath} alt={card.name}/>
+              </div>
+              <div>
+                <h2>{card.name}</h2>
+                <p><strong>{card.keywords}</strong></p>
+                { reversed
+                  ? <p>{ card.shadow }</p>
+                  : <p>{ card.light }</p>
+                }
+                { focus === 'work'
+                  ? <p>{ card.focus_work }</p>
+                  : null
+                }
+                { focus === 'relationships'
+                  ? <p>{ card.focus_relationships }</p>
+                  : null
+                }
+                { focus === 'spirituality'
+                  ? <p>{ card.focus_spirituality }</p>
+                  : null
+                }
+                { focus === 'personalgrowth'
+                  ? <p>{ card.focus_personalgrowth }</p>
+                  : null
+                }
+                { focus === 'fortunetelling'
+                  ? <p>{ card.focus_fortunetelling }</p>
+                  : null
+                }
+              </div>
+            </div>
+            )}
+            </div>
+          </div>
+        </div>
+      </div>
     )
   }
 }
