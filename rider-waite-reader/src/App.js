@@ -26,7 +26,7 @@ class Footer extends Component {
     return (
 
       <footer>
-        <p>This site uses public domain meanings from Mark McElroy and public domain art scanned by Holly Voley</p>
+        <p>This site uses public domain meanings from <a href="http://tarottools.com/a-guide-to-tarot-card-meanings/">Mark McElroy</a> and public domain art scanned by <a href="https://en.wikipedia.org/wiki/Rider-Waite_tarot_deck">Holly Voley</a></p>
       </footer>
 
     )
@@ -204,53 +204,52 @@ class FormGetAReading extends Component {
     } else {
       return (
         <div>
-          <section className="reading">
-            <form onSubmit={this.handleSubmit}>
-              <p className="clear">
-                <h4>Enter your question</h4>
-                <input type="text" name="question" onChange={this.handleChange}/>
-              </p>
-              <p className="clear">
-                <h4>Tarot spread</h4>
-                <label><input type="radio" name="layout" value="onecard"
-                  defaultChecked onChange={this.handleChange}/><span>One Card</span></label>
-                <label><input type="radio" name="layout" value="threecard"
-                  onChange={this.handleChange}/><span>Three Cards</span></label>
-                <label><input type="radio" name="layout" value="directional"
-                  onChange={this.handleChange}/><span>Directional</span></label>
-                <label><input type="radio" name="layout" value="celticcross"
-                  onChange={this.handleChange}/><span>Celtic Cross</span></label>
-                <label><input type="radio" name="layout" value="treeoflife"
-                  onChange={this.handleChange}/><span>Tree of Life</span></label>
-              </p>
-              <p className="clear">
-                <h4>Focus of Reading</h4>
-                <label><input type="radio" name="focus" value="none"
-                  defaultChecked onChange={this.handleChange}/><span>None</span></label>
-                <label><input type="radio" name="focus" value="relationships"
-                  onChange={this.handleChange}/><span>Relationships</span></label>
-                <label><input type="radio" name="focus" value="work"
-                  onChange={this.handleChange}/><span>Work</span></label>
-                <label><input type="radio" name="focus" value="spiritual"
-                  onChange={this.handleChange}/><span>Spiritual</span></label>
-                <label><input type="radio" name="focus" value="personalgrowth"
-                  onChange={this.handleChange}/><span>Personal Growth</span></label>
-                <label><input type="radio" name="focus" value="fortunetelling"
-                  onChange={this.handleChange}/><span>Fortunetelling</span></label>
-              </p>
-              <p className="clear">
-                <h4>Allow reversed cards?</h4>
-                <label><input type="radio" name="reversed" value="false"
-                  defaultChecked onChange={this.handleChange}/><span>No</span></label>
-                <label><input type="radio" name="reversed" value="true"
-                  onChange={this.handleChange}/><span>Yes</span></label>
+          <form onSubmit={this.handleSubmit}>
+            <p className="clear">
+              <h4>Enter your question</h4>
+              <input className="textbox" type="text" name="question" onChange={this.handleChange}/>
+            </p>
+            <p className="clear">
+              <h4>Choose a spread</h4>
+              <label><input type="radio" name="layout" value="onecard"
+                defaultChecked onChange={this.handleChange}/><span>One Card</span></label>
+              <label><input type="radio" name="layout" value="threecard"
+                onChange={this.handleChange}/><span>Three Cards</span></label>
+              <label><input type="radio" name="layout" value="directional"
+                onChange={this.handleChange}/><span>Directional</span></label>
+              <label><input type="radio" name="layout" value="celticcross"
+                onChange={this.handleChange}/><span>Celtic Cross</span></label>
+              <label><input type="radio" name="layout" value="treeoflife"
+                onChange={this.handleChange}/><span>Tree of Life</span></label>
+            </p>
+            <p className="clear">
+              <h4>What should the reading focus on?</h4>
+              <label><input type="radio" name="focus" value="none"
+                defaultChecked onChange={this.handleChange}/><span>None</span></label>
+              <label><input type="radio" name="focus" value="relationships"
+                onChange={this.handleChange}/><span>Relationships</span></label>
+              <label><input type="radio" name="focus" value="work"
+                onChange={this.handleChange}/><span>Work</span></label>
+              <label><input type="radio" name="focus" value="spiritual"
+                onChange={this.handleChange}/><span>Spiritual</span></label>
+              <label><input type="radio" name="focus" value="personalgrowth"
+                onChange={this.handleChange}/><span>Personal Growth</span></label>
+              <label><input type="radio" name="focus" value="fortunetelling"
+                onChange={this.handleChange}/><span>Fortunetelling</span></label>
+            </p>
+            <p className="clear">
+              <h4>Allow reversed cards?</h4>
+              <label><input type="radio" name="reversed" value="false"
+                defaultChecked onChange={this.handleChange}/><span>No</span></label>
+              <label><input type="radio" name="reversed" value="true"
+                onChange={this.handleChange}/><span>Yes</span></label>
 
-              </p>
-              <p className="clear">
-                <input type="submit" value="Read the cards!" />
-              </p>
-            </form>
-          </section>
+            </p>
+            <p className="clear">
+              <h4>Concentrate on your question...</h4>
+              <input className="submit" type="submit" value="Click to shuffle and deal!" />
+            </p>
+          </form>
         </div>
       )
     }
