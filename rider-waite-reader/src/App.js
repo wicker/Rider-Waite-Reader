@@ -482,7 +482,7 @@ class SpreadDirectional extends Component {
 
   render() {
 
-    const { question, cards, focus } = this.state
+    const { question, cards } = this.state
 
     return (
 
@@ -565,7 +565,7 @@ class SpreadCelticCross extends Component {
 
   render() {
 
-    const { question, cards, reversed, focus } = this.state
+    const { question, cards } = this.state
 
     return (
 
@@ -663,7 +663,7 @@ class SpreadTreeOfLife extends Component {
 
   render() {
 
-    const { question, cards, reversed, focus } = this.state
+    const { question, cards } = this.state
 
     return (
 
