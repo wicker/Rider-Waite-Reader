@@ -43,6 +43,28 @@ footer a:hover {
   color: #000;
 }
 
+.tertiary {
+  margin: 0 auto;
+  display: inline-block;
+  text-align: center;
+}
+
+.tertiary-container {
+  background-color: #46ba92;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tertiary a {
+  border: 1px solid #7cedc2;
+  padding: 20px;
+  border-radius: 10px;
+  color: #000;
+  text-decoration: none;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.2em;
+}
+
 .center {
   text-align: center;
 }

@@ -31,6 +31,19 @@ class Footer extends Component {
   }
 }
 
+class TryAnotherReading extends Component {
+
+  render() {
+    return (
+
+      <div className="tertiary-container">
+        <p className="submit tertiary"><a href="/">Click for another reading.</a></p>
+      </div>
+
+    )
+  }
+}
+
 class NotFound404 extends Component {
 
   render() {
@@ -154,6 +167,7 @@ class FormGetAReading extends Component {
                       question={this.state.question}
                       card={this.state.cardResult}
                     />
+                    <TryAnotherReading />
                     <Footer />
                   </div>
                  )
@@ -165,6 +179,7 @@ class FormGetAReading extends Component {
                       reversed={this.state.reversed}
                       focus={this.state.focus}
                     />
+                    <TryAnotherReading />
                     <Footer />
                   </div>
                  )
@@ -175,6 +190,7 @@ class FormGetAReading extends Component {
                       cards={this.state.cardResult}
                       focus={this.state.focus}
                     />
+                    <TryAnotherReading />
                     <Footer />
                   </div>
                  )
@@ -186,6 +202,7 @@ class FormGetAReading extends Component {
                       reversed={this.state.reversed}
                       focus={this.state.focus}
                     />
+                    <TryAnotherReading />
                     <Footer />
                   </div>
                  )
@@ -197,6 +214,7 @@ class FormGetAReading extends Component {
                       reversed={this.state.reversed}
                       focus={this.state.focus}
                     />
+                    <TryAnotherReading />
                     <Footer />
                   </div>
                  )
