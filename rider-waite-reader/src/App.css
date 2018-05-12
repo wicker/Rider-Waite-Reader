@@ -85,8 +85,8 @@ h4 {
 .reading {
   margin: 20px auto;
   padding: 20px;
-  width: 800px;
-  max-width: 100%;
+  max-width: 800px;
+  width: 100%;
 }
 
 .cards {
@@ -95,6 +95,10 @@ h4 {
 
 .card-description {
   padding: 30px;
+}
+
+.card-description h3 {
+  font-size: 1.0em;
 }
 
 .item {
@@ -219,8 +223,8 @@ label input:checked + span {
 form {
   margin: 20px auto;
   padding: 0 20px;
-  width: 800px;
-  max-width: 100%;
+  max-width: 800px;
+  width: 100%;
 }
 
 .clear {
