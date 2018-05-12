@@ -223,13 +223,13 @@ class FormGetAReading extends Component {
       }
     } else {
       return (
-        <div>
+        <div className="test">
           <form onSubmit={this.handleSubmit}>
-            <div className="clear">
+            <div className="clear padded">
               <h4>Enter your question</h4>
               <input className="textbox" type="text" name="question" onChange={this.handleChange}/>
             </div>
-            <div className="clear">
+            <div className="clear padded">
               <h4>Choose a spread</h4>
               <label><input type="radio" name="layout" value="onecard"
                 defaultChecked onChange={this.handleChange}/><span>One Card</span></label>
@@ -242,8 +242,8 @@ class FormGetAReading extends Component {
               <label><input type="radio" name="layout" value="treeoflife"
                 onChange={this.handleChange}/><span>Tree of Life</span></label>
             </div>
-            <div className="clear">
-              <h4>What should the reading focus on?</h4>
+            <div className="clear padded">
+              <h4>Focus of the reading?</h4>
               <label><input type="radio" name="focus" value="none"
                 defaultChecked onChange={this.handleChange}/><span>None</span></label>
               <label><input type="radio" name="focus" value="relationships"
@@ -257,7 +257,7 @@ class FormGetAReading extends Component {
               <label><input type="radio" name="focus" value="fortunetelling"
                 onChange={this.handleChange}/><span>Fortunetelling</span></label>
             </div>
-            <div className="clear">
+            <div className="clear padded">
               <h4>Allow reversed cards?</h4>
               <label><input type="radio" name="reversed" value="false"
                 defaultChecked onChange={this.handleChange}/><span>No</span></label>
@@ -265,9 +265,9 @@ class FormGetAReading extends Component {
                 onChange={this.handleChange}/><span>Yes</span></label>
 
             </div>
-            <div className="clear">
+            <div className="clear padded">
               <h4>Concentrate on your question...</h4>
-              <input className="submit" type="submit" value="Click to shuffle and deal!" />
+              <input className="submit" type="submit" value="Click to shuffle!" />
             </div>
           </form>
         </div>
@@ -291,14 +291,14 @@ class CardDescription extends Component {
     const { card } = this.props;
 
     return (
-      <div key={card.name} className="flex-row">
+      <div key={card.name} className="flex-row-descriptions">
         <div>
           { card.reversed
-            ? <div className="item reversed"
+            ? <div className="item-description reversed"
                 style={{backgroundImage: `url(${card.imgpath})`}}
                 alt={card.name}
               />
-            : <div className="item"
+            : <div className="item-description"
                 style={{backgroundImage: `url(${card.imgpath})`}}
                 alt={card.name}
               />
