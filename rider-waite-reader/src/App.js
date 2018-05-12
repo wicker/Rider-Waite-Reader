@@ -615,7 +615,7 @@ class SpreadCelticCross extends Component {
                 style={{backgroundImage: `url(${this.props.cards[0].imgpath})`}}>
               </div>
               <div className={"item celticcross-card-two "
-                + (cards[1].reversed ? 'rotated-and-reversed' : 'rotated')}
+                + (cards[1].reversed ? 'rotated-reversed' : 'rotated')}
                 style={{backgroundImage: `url(${this.props.cards[1].imgpath})`}}>
               </div>
               <div className={"item celticcross-card-three " + (cards[5].reversed ? 'reversed' : '')}
