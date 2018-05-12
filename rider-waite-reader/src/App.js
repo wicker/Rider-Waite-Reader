@@ -585,8 +585,8 @@ class SpreadCelticCross extends Component {
           }
           <div className="flex-row cards">
             <div className="flex-col">
-              <div className={"item " + (cards[3].reversed ? 'reversed' : '')}
-                style={{backgroundImage: `url(${this.props.cards[3].imgpath})`}}>
+              <div className={"item " + (cards[2].reversed ? 'reversed' : '')}
+                style={{backgroundImage: `url(${this.props.cards[2].imgpath})`}}>
               </div>
             </div>
             <div className="flex-col celticcross-col-second">
@@ -600,13 +600,13 @@ class SpreadCelticCross extends Component {
                 + (cards[1].reversed ? 'rotated-and-reversed' : 'rotated')}
                 style={{backgroundImage: `url(${this.props.cards[1].imgpath})`}}>
               </div>
-              <div className={"item celticcross-card-three " + (cards[2].reversed ? 'reversed' : '')}
-                style={{backgroundImage: `url(${this.props.cards[2].imgpath})`}}>
+              <div className={"item celticcross-card-three " + (cards[5].reversed ? 'reversed' : '')}
+                style={{backgroundImage: `url(${this.props.cards[5].imgpath})`}}>
               </div>
             </div>
             <div className="flex-col celticcross-col-third">
-              <div className={"item " + (cards[5].reversed ? 'reversed' : '')}
-                style={{backgroundImage: `url(${this.props.cards[5].imgpath})`}}>
+              <div className={"item " + (cards[3].reversed ? 'reversed' : '')}
+                style={{backgroundImage: `url(${this.props.cards[3].imgpath})`}}>
               </div>
             </div>
             <div className="flex-col">
