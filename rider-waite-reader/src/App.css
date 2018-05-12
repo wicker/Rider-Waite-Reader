@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  background-color: #7cedc2;
+}
+
+header {
+  margin: 0;
+  padding: 20px;
+  background-color: #008964;
+  color: #000;
+}
+
+footer {
+  margin: 0;
+  padding: 20px;
+  background-color: #008964;
+  color: #000;
+  text-align: center;
+}
+
+footer a {
+  color: #7cedc2;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
+.primary {
+  background-color: #7cedc2;
+  color: #000;
+}
+
+.secondary {
+  background-color: #46ba92;
+  color: #000;
+}
+
+.tertiary {
+  margin: 0 auto;
+  display: inline-block;
+  text-align: center;
+}
+
+.tertiary-container {
+  background-color: #46ba92;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tertiary a {
+  border: 1px solid #7cedc2;
+  padding: 20px;
+  border-radius: 10px;
+  color: #000;
+  text-decoration: none;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.2em;
+}
+
+.center {
+  text-align: center;
+}
+
+h1 {
+  font-size: 3em;
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+}
+
+h1 a {
+  color: #000;
+  text-decoration: none;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.4em;
+}
+
+h3 { 
+  text-align: center;
+  margin: 0 auto;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 1.4em;
+  padding: 20px 0 10px 0;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.2em;
+  text-align:center;
+  margin: 0 0 20px 0;
+}
+
+.test {
+  border: 1px solid #000;
+}
+
+.reading {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  width: 80%;
+}
+
+.cards {
+  padding: 30px;
+}
+
+.card-description {
+  padding: 30px;
+}
+
+.card-description h3 {
+  font-size: 1.0em;
+}
+
+.item-description {
+  border: 3px solid #000;
+  flex: 1;
+  margin: 10px auto;
+  min-height: 350px;
+  max-height: 350px;
+  width: 200px;
+  background-size: cover;
+}
+
+.item {
+  border: 3px solid #000;
+  flex: 1;
+  margin: 10px auto;
+  min-height: 350px;
+  max-height: 350px;
+  width: 200px;
+  background-size: cover;
+}
+
+.item h2 {
+  font-size: 1.1em;
+  font-weight: normal;
+  margin-top: -30px;
+  text-align:center;
+}
+
+.taller {
+  margin: 20px 0;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: no-wrap;
+}
+
+.flex-row-descriptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.flex-row-descriptions > * {
+  flex: 1 1 300px;
+}
+
+.rotated-reversed {
+  transform: rotate(-90deg);
+  -webkit-transform-origin: 50%  51%;
+  margin-top: -100px;
+}
+
+.rotated {
+  transform: rotate(90deg);
+  -webkit-transform-origin: 50%  51%;
+  margin-top: -100px;
+}
+
+.reversed {
+  transform: rotate(180deg);
+}
+
+.directional-north {
+  margin-bottom: 10px
+}
+
+.directional-center {
+  margin-top: 30px
+}
+
+.celticcross-col-second {
+  padding: 50px;
+}
+
+.celticcross-col-third {
+  padding: 30px;
+}
+
+.celticcross-card-one {
+  margin-top: 30px;
+}
+
+.celticcross-card-three {
+  margin-top: 30px;
+}
+
+.treeoflife-row {
+  align-items: flex-start
+}
+
+.treeoflife-col-one {
+  margin-top: 100px;
+}
+
+.treeoflife-col-three {
+  margin-top: 100px;
+}
+
+.treeoflife-card-six {
+  margin-top: 200px;
+}
+
+.padded {
+  padding: 20px;
+}
+
+label {
+	float:left;
+	margin: 4px;
+  background-color: #46ba92;
+  border-radius: 10px;
+  display: inline-block;
+  overflow: auto;
+}
+
+label span {
+	text-align: center;
+	padding: 10px;
+	display: block;
+  font-size: 1em;
+}
+
+label input {
+  position:absolute;
+  left:-20px;
+}
+
+label:hover {
+  background-color: #008964;
+}
+
+label input:checked + span {
+  background-color: #008964;
+  border-radius: 10px;
+}
+
+form {
+  margin: 20px auto;
+  padding: 0 20px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.clear {
+  clear: both;
+}
+
+.textbox {
+  background-color: #46ba92;
+  border: 0;
+  font-size: 1.2em;
+  height: 1.5em;
+  width: 90%;
+  padding: 10px;
+}
+
+.submit {
+  background-color: #46ba92;
+  font-family: 'Dancing Script', cursive;
+  margin: 20px 0;
+  font-size: 2em;
+  font-weight: bold;
+  border: 0;
+  border-radius: 10px;
+  padding: 20px;
+  width: 90%;
+}
+
+@media screen and (max-width: 1000px) {
+
+  .item {
+    border: 3px solid #000;
+    flex: 1;
+    margin: 10px auto;
+    min-height: 175px;
+    max-height: 175px;
+    width: 100px;
+    background-size: cover;
+  }
+
+  .item h2 {
+    font-size: 1.1em;
+    font-weight: normal;
+    margin-top: -30px;
+    text-align:center;
+  }
+
+  .rotated-reversed {
+    transform: rotate(-90deg);
+    -webkit-transform-origin: 50%  51%;
+    margin-top: -80px;
+  }
+
+  .rotated {
+    transform: rotate(90deg);
+    -webkit-transform-origin: 50%  51%;
+    margin-top: -80px;
+  }
+
+}
+
+@media screen and (max-width: 650px) {
+
+  body {
+    font-size: 16px;
+  }
+
+  .tertiary {
+    font-size: 1.6em;
+  }
+  
+}
+
+@media screen and (max-width: 425px) {
+
+  body {
+    font-size: 12px;
+  }
+
+  .textbox {
+    max-width: 80%;
+  }
+
+  h4 {
+    text-align: center;
+    margin: 0 0 0 -60px;
+    padding: 20px;
+  }
+
+  label {
+    display: block;
+    width: 80%;
+    font-size: 1.4em;
+  }
+
+  .tertiary {
+    font-size: 1.4em;
+  }
+
+}
+
