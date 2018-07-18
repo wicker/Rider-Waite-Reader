@@ -446,20 +446,17 @@ class SpreadThreeCard extends Component {
               <div className="flex-col">
                 <div className={"item " + (cards[0].reversed ? 'reversed' : '')}
                   style={{backgroundImage: `url(${this.props.cards[0].imgpath})`}}>
-                  <h2>Past</h2>
                 </div>
               </div>
               <div className="flex-col">
                 <div className={"item " + (cards[1].reversed ? 'reversed' : '')}
                   style={{backgroundImage: `url(${this.props.cards[1].imgpath})`}}>
-                  <h2>Present</h2>
                 </div>
               </div>
               <div className="flex-col">
               {console.log(this.props.cards[2].reversed)}
                 <div className={"item " + (cards[2].reversed ? 'reversed' : '')}
                   style={{backgroundImage: `url(${this.props.cards[2].imgpath})`}}>
-                  <h2>Future</h2>
                 </div>
               </div>
             </div>

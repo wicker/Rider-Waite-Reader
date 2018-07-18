@@ -3,6 +3,12 @@ Get a unique tarot reading in one of five spreads on desktop, tablet, and phone.
 
 &raquo; <a href="http://riderwaitereader.com/">Click here for a live demo</a>
 
+## Screenshots
+
+![Cards](screenshot-cards.png)
+
+![Reading](screenshot-reading.png)
+
 ## Credits
 
 The tarot images are of the Rider-Waite-Smith deck from sacred-tarot and are in the public domain.
