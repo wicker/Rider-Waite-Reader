@@ -1,7 +1,27 @@
 # Rider-Waite Tarot Reader React App
 Get a unique tarot reading in one of five spreads on desktop, tablet, and phone.
 
-&raquo; <a href="http://riderwaitereader.com/">Click here for a live demo</a>
+This is a single page React application which uses  
+
+## Usage
+
+&raquo; The live demo has been removed. 
+
+To run this app, clone the repository:
+
+```
+git clone git@github.com:wicker/Rider-Waite-Reader.git
+```
+
+Then cd into the app directory to install and start it.
+
+```
+cd Rider-Waite-Reader/rider-waite-reader
+npm install
+npm start
+```
+
+Starting the app should automatically open a browser window. If it doesn't, visit [http://localhost:3000/](http://localhost:3000/).
 
 ## Screenshots
 
